@@ -26,7 +26,22 @@ const getLrcBalances = accounts => {
     });
 };
 
+const getLrcAllowances = (accounts, spenderAddress) => {
+  console.log("getLrcAllowances", accounts, spenderAddress);
+
+  const allowances = accounts.map(address =>
+    loopringContract.methods
+      .allowance(address, spenderAddress)
+      .call()
+      .then(allowance => ({ [address]: allowance }))
+  );
+  console.log(allowances);
+
+  return Promise.all(allowances);
+};
+
 const LrcService = {
-  getLrcBalances
+  getLrcBalances,
+  getLrcAllowances
 };
 export default LrcService;
