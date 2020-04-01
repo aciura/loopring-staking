@@ -1,20 +1,19 @@
-import React from "react";
-import { Account } from "./components/Account";
+import React from 'react'
+import { Account } from './components/Account'
+import { web3, loopringContract, userStakingPoolContract } from './LrcContract'
 
-import { web3, loopringContract, userStakingPoolContract } from "./LrcContract";
-
-import "./App.css";
+import './App.css'
 
 function App() {
-  const [accounts, setAccounts] = React.useState([]);
+  const [accounts, setAccounts] = React.useState([])
 
   React.useEffect(() => {
     if (accounts.length === 0) {
       web3.eth.getAccounts().then(_accounts => {
-        setAccounts(_accounts);
-      });
+        setAccounts(_accounts)
+      })
     }
-  }, [accounts]);
+  }, [accounts])
 
   return (
     <div className="App">
@@ -31,7 +30,7 @@ function App() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

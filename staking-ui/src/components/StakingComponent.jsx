@@ -1,36 +1,50 @@
-import React from "react";
-import LrcService from "../services/LrcService";
+import React from 'react'
+import LrcService from '../services/LrcService'
 
-export function StakingComponent({ address, allowance, balance }) {
-  const [newStakeAmount, setNewStakeAmount] = React.useState(0);
-  const [stakingData, setStakingData] = React.useState(null);
+const userStaking = {
+  withdrawalWaitTime: 0 /*uint256*/,
+  rewardWaitTime: 0 /*uint256*/,
+  balance: 0 /*uint256*/,
+  pendingReward: 0 /*uint256*/,
+}
+
+export function StakingComponent({
+  address,
+  allowance,
+  balance,
+  refreshAccountInfo = _ => {},
+}) {
+  const [newStakeAmount, setNewStakeAmount] = React.useState(0)
+  const [stakingData, setStakingData] = React.useState(null)
+  const [error, setError] = React.useState(null)
+
+  const refreshAddressStaking = address => {
+    LrcService.getUserStaking(address).then(result => {
+      setStakingData(result)
+    })
+    refreshAccountInfo(address)
+  }
 
   const updateAmount = e => {
-    const newAmount = e.target.value;
-    if (newAmount > 0) setNewStakeAmount(newAmount);
-  };
+    const newAmount = e.target.value
+    if (newAmount > 0) setNewStakeAmount(newAmount)
+  }
 
   const stakeLrc = () => {
     LrcService.stake(address, newStakeAmount)
       .then(result => {
-        console.log(result);
+        console.log(result)
+        refreshAddressStaking(address)
       })
-      .catch(error => console.error(error));
-  };
+      .catch(error => {
+        console.error(error)
+        setError(error.toString())
+      })
+  }
 
   React.useEffect(() => {
-    /* (
-      uint256 withdrawalWaitTime,
-      uint256 rewardWaitTime,
-      uint256 balance,
-      uint256 pendingReward
-      )
-    */
-    LrcService.getUserStaking(address).then(result => {
-      console.log(result);
-      setStakingData(result);
-    });
-  }, [address]);
+    refreshAddressStaking(address)
+  }, [address])
 
   return (
     <div>
@@ -40,6 +54,7 @@ export function StakingComponent({ address, allowance, balance }) {
       <div>Stake max: {Math.min(allowance, balance)}</div>
       <input type="number" value={newStakeAmount} onChange={updateAmount} />
       <input type="submit" value="Stake" onClick={stakeLrc} />
+      {!!error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
-  );
+  )
 }
