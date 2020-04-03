@@ -1,6 +1,7 @@
 import React from 'react'
 import LrcService from '../services/LrcService'
 import { StakingComponent } from './StakingComponent'
+import styles from './Account.module.scss'
 
 export function Account({ address }) {
   const [balance, setBalance] = React.useState(null)
@@ -51,7 +52,7 @@ export function Account({ address }) {
   }
 
   return (
-    <div>
+    <div className={styles.Account}>
       <h3>Address: {address}</h3>
       <div>balance: {balance}</div>
       <div>allowance: {allowance}</div>

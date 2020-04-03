@@ -2,7 +2,7 @@ import React from 'react'
 import { Account } from './components/Account'
 import { web3, loopringContract, userStakingPoolContract } from './LrcContract'
 
-import './App.css'
+import styles from './App.module.scss'
 
 function App() {
   const [accounts, setAccounts] = React.useState([])
@@ -16,7 +16,7 @@ function App() {
   }, [accounts])
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <div>
         <h2>Contract addresses</h2>
         <div>Loopring token contract: {loopringContract._address}</div>
