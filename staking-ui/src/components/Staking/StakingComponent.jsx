@@ -1,5 +1,5 @@
 import React from 'react'
-import LrcService from '../services/LrcService'
+import LrcService from '../../services/LrcService'
 
 const userStaking = {
   withdrawalWaitTime: 0 /*uint256 the time you need to wait (seconds) before you can withdraw staked LRC */,
@@ -46,18 +46,24 @@ export function StakingComponent({
     refreshAddressStaking(address)
   }, [address])
 
+  const getWaitTimeInDays = waitTimeInSec => {
+    return (waitTimeInSec / 60 / 60 / 24).toFixed(2)
+  }
+
   return (
     <div>
       <h4>Staking amount</h4>
       <div>Stake balance: {stakingData?.balance}</div>
-      <div>Stake pending reward: {stakingData?.pendingReward}</div>
+      <div>Pending reward: {stakingData?.pendingReward}</div>
       <div>Stake max: {Math.min(allowance, balance)}</div>
       <div>
-        withdrawalWaitTime: {stakingData?.withdrawalWaitTime / 60 / 60 / 24}{' '}
+        withdrawal Wait Time:&nbsp;
+        {getWaitTimeInDays(stakingData?.withdrawalWaitTime)}
         days
       </div>
       <div>
-        rewardWaitTime: {stakingData?.rewardWaitTime / 60 / 60 / 24} days
+        Wait time before claiming reward:&nbsp;
+        {getWaitTimeInDays(stakingData?.rewardWaitTime)} days
       </div>
       <input type="number" value={newStakeAmount} onChange={updateAmount} />
       <input type="submit" value="Stake" onClick={stakeLrc} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Account } from './components/Account'
+import { Account } from './components/Account/Account'
 import { web3, loopringContract, userStakingPoolContract } from './LrcContract'
 
 import styles from './App.module.scss'
