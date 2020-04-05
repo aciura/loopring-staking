@@ -1,5 +1,8 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
+import { ClaimComponent } from '../Claim/ClaimComponent'
+
+import styles from './staking.module.scss'
 
 const userStaking = {
   withdrawalWaitTime: 0 /*uint256 the time you need to wait (seconds) before you can withdraw staked LRC */,
@@ -51,10 +54,9 @@ export function StakingComponent({
   }
 
   return (
-    <div>
+    <div className={styles.staking}>
       <h4>Staking amount</h4>
       <div>Stake balance: {stakingData?.balance}</div>
-      <div>Pending reward: {stakingData?.pendingReward}</div>
       <div>Stake max: {Math.min(allowance, balance)}</div>
       <div>
         withdrawal Wait Time:&nbsp;
@@ -68,6 +70,12 @@ export function StakingComponent({
       <input type="number" value={newStakeAmount} onChange={updateAmount} />
       <input type="submit" value="Stake" onClick={stakeLrc} />
       {!!error && <div style={{ color: 'red' }}>{error}</div>}
+
+      <ClaimComponent
+        stakingData={stakingData}
+        address={address}
+        refreshAccountInfo={refreshAccountInfo}
+      />
     </div>
   )
 }

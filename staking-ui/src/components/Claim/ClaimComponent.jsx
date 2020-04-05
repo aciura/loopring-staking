@@ -2,8 +2,13 @@ import React from 'react'
 import LrcService from '../../services/LrcService'
 import styles from './ClaimComponent.module.scss'
 
-export function ClaimComponent({ address, refreshAccountInfo = _ => {} }) {
+export function ClaimComponent({
+  address,
+  stakingData,
+  refreshAccountInfo = _ => {},
+}) {
   const [error, setError] = React.useState()
+  const { pendingReward } = stakingData ?? { pendingReward: 0 }
 
   const claimReward = () => {
     LrcService.claimReward(address)
@@ -19,7 +24,7 @@ export function ClaimComponent({ address, refreshAccountInfo = _ => {} }) {
 
   return (
     <div className={styles.claim}>
-      Claim Reward for {address}
+      Pending Reward:&nbsp;{pendingReward}
       <button onClick={claimReward}>Claim Reward</button>
       {error && <div className={styles.error}>{error?.toString()}</div>}
     </div>

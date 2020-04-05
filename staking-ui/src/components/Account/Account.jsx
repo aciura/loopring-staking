@@ -1,7 +1,6 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
 import { StakingComponent } from '../Staking/StakingComponent'
-import { ClaimComponent } from '../Claim/ClaimComponent'
 
 import styles from './Account.module.scss'
 
@@ -65,10 +64,6 @@ export function Account({ address }) {
         address={address}
         allowance={allowance}
         balance={balance}
-        refreshAccountInfo={refreshAccountInfo}
-      />
-      <ClaimComponent
-        address={address}
         refreshAccountInfo={refreshAccountInfo}
       />
     </div>
