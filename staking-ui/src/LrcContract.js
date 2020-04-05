@@ -2,7 +2,7 @@ import Web3 from "web3";
 import LrcContract from "./contracts/LRC_v2.json";
 import UserStakingPool from "./contracts/UserStakingPool.json";
 
-const truffleNode = "http://127.0.0.1:7545";
+const truffleNode = "http://127.0.0.1:9545/";
 
 export const web3 = new Web3(truffleNode);
 
