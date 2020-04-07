@@ -422,36 +422,19 @@
   "ast": {
     "absolutePath": "/C/Users/kudla/dev/loopring-staking/eth/contracts/Loopring_LRC_v2.sol",
     "exportedSymbols": {
-      "BasicToken": [
-        2810
-      ],
-      "ERC20": [
-        2850
-      ],
-      "ERC20Basic": [
-        2555
-      ],
-      "LRC_v2": [
-        3293
-      ],
-      "SafeMath": [
-        2651
-      ],
-      "StandardToken": [
-        3209
-      ]
+      "BasicToken": [2810],
+      "ERC20": [2850],
+      "ERC20Basic": [2555],
+      "LRC_v2": [3293],
+      "SafeMath": [2651],
+      "StandardToken": [3209]
     },
     "id": 3294,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 2519,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.5",
-          ".7"
-        ],
+        "literals": ["solidity", ">=", "0.5", ".7"],
         "nodeType": "PragmaDirective",
         "src": "108:24:2"
       },
@@ -462,9 +445,7 @@
         "documentation": "@title ERC20Basic\n@dev Simpler version of ERC20 interface\n@dev see https://github.com/ethereum/EIPs/issues/179",
         "fullyImplemented": false,
         "id": 2555,
-        "linearizedBaseContracts": [
-          2555
-        ],
+        "linearizedBaseContracts": [2555],
         "name": "ERC20Basic",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -891,9 +872,7 @@
         "documentation": "@title SafeMath\n@dev Math operations with safety checks that throw on error",
         "fullyImplemented": true,
         "id": 2651,
-        "linearizedBaseContracts": [
-          2651
-        ],
+        "linearizedBaseContracts": [2651],
         "name": "SafeMath",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -991,9 +970,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    2572
-                  ],
+                  "assignments": [2572],
                   "declarations": [
                     {
                       "constant": false,
@@ -1322,9 +1299,7 @@
               "src": "1192:221:2",
               "statements": [
                 {
-                  "assignments": [
-                    2598
-                  ],
+                  "assignments": [2598],
                   "declarations": [
                     {
                       "constant": false,
@@ -1785,9 +1760,7 @@
               "src": "1803:80:2",
               "statements": [
                 {
-                  "assignments": [
-                    2636
-                  ],
+                  "assignments": [2636],
                   "declarations": [
                     {
                       "constant": false,
@@ -2102,17 +2075,12 @@
             "src": "2005:10:2"
           }
         ],
-        "contractDependencies": [
-          2555
-        ],
+        "contractDependencies": [2555],
         "contractKind": "contract",
         "documentation": "@title Basic token\n@dev Basic version of StandardToken, with no allowances.",
         "fullyImplemented": true,
         "id": 2810,
-        "linearizedBaseContracts": [
-          2810,
-          2555
-        ],
+        "linearizedBaseContracts": [2810, 2555],
         "name": "BasicToken",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -2507,10 +2475,7 @@
                       "id": 2687,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "2558:7:2",
                       "typeDescriptions": {
@@ -2537,9 +2502,7 @@
                   "src": "2558:39:2"
                 },
                 {
-                  "assignments": [
-                    2697
-                  ],
+                  "assignments": [2697],
                   "declarations": [
                     {
                       "constant": false,
@@ -3391,10 +3354,7 @@
                       "id": 2754,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "3263:7:2",
                       "typeDescriptions": {
@@ -4151,17 +4111,12 @@
             "src": "4013:10:2"
           }
         ],
-        "contractDependencies": [
-          2555
-        ],
+        "contractDependencies": [2555],
         "contractKind": "contract",
         "documentation": "@title ERC20 interface\n@dev see https://github.com/ethereum/EIPs/issues/20",
         "fullyImplemented": false,
         "id": 2850,
-        "linearizedBaseContracts": [
-          2850,
-          2555
-        ],
+        "linearizedBaseContracts": [2850, 2555],
         "name": "ERC20",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -4658,21 +4613,12 @@
             "src": "4755:10:2"
           }
         ],
-        "contractDependencies": [
-          2555,
-          2810,
-          2850
-        ],
+        "contractDependencies": [2555, 2810, 2850],
         "contractKind": "contract",
         "documentation": "@title Standard ERC20 token\n\n * @dev Implementation of the basic standard token.\n@dev https://github.com/ethereum/EIPs/issues/20\n@dev Based on code by FirstBlood: https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol",
         "fullyImplemented": true,
         "id": 3209,
-        "linearizedBaseContracts": [
-          3209,
-          2810,
-          2850,
-          2555
-        ],
+        "linearizedBaseContracts": [3209, 2810, 2850, 2555],
         "name": "StandardToken",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -4966,10 +4912,7 @@
                       "id": 2876,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "4984:7:2",
                       "typeDescriptions": {
@@ -5082,10 +5025,7 @@
                       "id": 2884,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "5024:7:2",
                       "typeDescriptions": {
@@ -5241,10 +5181,7 @@
                       "id": 2892,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "5070:7:2",
                       "typeDescriptions": {
@@ -6453,10 +6390,7 @@
                       "id": 2986,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "6043:7:2",
                       "typeDescriptions": {
@@ -6612,10 +6546,7 @@
                       "id": 2994,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "6088:7:2",
                       "typeDescriptions": {
@@ -8661,9 +8592,7 @@
               "src": "9397:364:2",
               "statements": [
                 {
-                  "assignments": [
-                    3158
-                  ],
+                  "assignments": [3158],
                   "declarations": [
                     {
                       "constant": false,
@@ -9463,23 +9392,12 @@
             "src": "9787:13:2"
           }
         ],
-        "contractDependencies": [
-          2555,
-          2810,
-          2850,
-          3209
-        ],
+        "contractDependencies": [2555, 2810, 2850, 3209],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 3293,
-        "linearizedBaseContracts": [
-          3293,
-          3209,
-          2810,
-          2850,
-          2555
-        ],
+        "linearizedBaseContracts": [3293, 3209, 2810, 2850, 2555],
         "name": "LRC_v2",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -9910,10 +9828,7 @@
                       "id": 3249,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "10339:7:2",
                       "typeDescriptions": {
@@ -10047,9 +9962,7 @@
                                 "id": 3269,
                                 "name": "transfer",
                                 "nodeType": "Identifier",
-                                "overloadedDeclarations": [
-                                  2797
-                                ],
+                                "overloadedDeclarations": [2797],
                                 "referencedDeclaration": 2797,
                                 "src": "10461:8:2",
                                 "typeDescriptions": {
@@ -10104,10 +10017,7 @@
                             "id": 3268,
                             "name": "require",
                             "nodeType": "Identifier",
-                            "overloadedDeclarations": [
-                              3348,
-                              3349
-                            ],
+                            "overloadedDeclarations": [3348, 3349],
                             "referencedDeclaration": 3349,
                             "src": "10453:7:2",
                             "typeDescriptions": {
@@ -10198,9 +10108,7 @@
                   },
                   "id": 3281,
                   "initializationExpression": {
-                    "assignments": [
-                      3258
-                    ],
+                    "assignments": [3258],
                     "declarations": [
                       {
                         "constant": false,
@@ -10455,10 +10363,7 @@
                       "id": 3288,
                       "name": "revert",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3350,
-                        3351
-                      ],
+                      "overloadedDeclarations": [3350, 3351],
                       "referencedDeclaration": 3350,
                       "src": "10602:6:2",
                       "typeDescriptions": {
@@ -10521,36 +10426,19 @@
   "legacyAST": {
     "absolutePath": "/C/Users/kudla/dev/loopring-staking/eth/contracts/Loopring_LRC_v2.sol",
     "exportedSymbols": {
-      "BasicToken": [
-        2810
-      ],
-      "ERC20": [
-        2850
-      ],
-      "ERC20Basic": [
-        2555
-      ],
-      "LRC_v2": [
-        3293
-      ],
-      "SafeMath": [
-        2651
-      ],
-      "StandardToken": [
-        3209
-      ]
+      "BasicToken": [2810],
+      "ERC20": [2850],
+      "ERC20Basic": [2555],
+      "LRC_v2": [3293],
+      "SafeMath": [2651],
+      "StandardToken": [3209]
     },
     "id": 3294,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 2519,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.5",
-          ".7"
-        ],
+        "literals": ["solidity", ">=", "0.5", ".7"],
         "nodeType": "PragmaDirective",
         "src": "108:24:2"
       },
@@ -10561,9 +10449,7 @@
         "documentation": "@title ERC20Basic\n@dev Simpler version of ERC20 interface\n@dev see https://github.com/ethereum/EIPs/issues/179",
         "fullyImplemented": false,
         "id": 2555,
-        "linearizedBaseContracts": [
-          2555
-        ],
+        "linearizedBaseContracts": [2555],
         "name": "ERC20Basic",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -10990,9 +10876,7 @@
         "documentation": "@title SafeMath\n@dev Math operations with safety checks that throw on error",
         "fullyImplemented": true,
         "id": 2651,
-        "linearizedBaseContracts": [
-          2651
-        ],
+        "linearizedBaseContracts": [2651],
         "name": "SafeMath",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -11090,9 +10974,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    2572
-                  ],
+                  "assignments": [2572],
                   "declarations": [
                     {
                       "constant": false,
@@ -11421,9 +11303,7 @@
               "src": "1192:221:2",
               "statements": [
                 {
-                  "assignments": [
-                    2598
-                  ],
+                  "assignments": [2598],
                   "declarations": [
                     {
                       "constant": false,
@@ -11884,9 +11764,7 @@
               "src": "1803:80:2",
               "statements": [
                 {
-                  "assignments": [
-                    2636
-                  ],
+                  "assignments": [2636],
                   "declarations": [
                     {
                       "constant": false,
@@ -12201,17 +12079,12 @@
             "src": "2005:10:2"
           }
         ],
-        "contractDependencies": [
-          2555
-        ],
+        "contractDependencies": [2555],
         "contractKind": "contract",
         "documentation": "@title Basic token\n@dev Basic version of StandardToken, with no allowances.",
         "fullyImplemented": true,
         "id": 2810,
-        "linearizedBaseContracts": [
-          2810,
-          2555
-        ],
+        "linearizedBaseContracts": [2810, 2555],
         "name": "BasicToken",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -12606,10 +12479,7 @@
                       "id": 2687,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "2558:7:2",
                       "typeDescriptions": {
@@ -12636,9 +12506,7 @@
                   "src": "2558:39:2"
                 },
                 {
-                  "assignments": [
-                    2697
-                  ],
+                  "assignments": [2697],
                   "declarations": [
                     {
                       "constant": false,
@@ -13490,10 +13358,7 @@
                       "id": 2754,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "3263:7:2",
                       "typeDescriptions": {
@@ -14250,17 +14115,12 @@
             "src": "4013:10:2"
           }
         ],
-        "contractDependencies": [
-          2555
-        ],
+        "contractDependencies": [2555],
         "contractKind": "contract",
         "documentation": "@title ERC20 interface\n@dev see https://github.com/ethereum/EIPs/issues/20",
         "fullyImplemented": false,
         "id": 2850,
-        "linearizedBaseContracts": [
-          2850,
-          2555
-        ],
+        "linearizedBaseContracts": [2850, 2555],
         "name": "ERC20",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -14757,21 +14617,12 @@
             "src": "4755:10:2"
           }
         ],
-        "contractDependencies": [
-          2555,
-          2810,
-          2850
-        ],
+        "contractDependencies": [2555, 2810, 2850],
         "contractKind": "contract",
         "documentation": "@title Standard ERC20 token\n\n * @dev Implementation of the basic standard token.\n@dev https://github.com/ethereum/EIPs/issues/20\n@dev Based on code by FirstBlood: https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol",
         "fullyImplemented": true,
         "id": 3209,
-        "linearizedBaseContracts": [
-          3209,
-          2810,
-          2850,
-          2555
-        ],
+        "linearizedBaseContracts": [3209, 2810, 2850, 2555],
         "name": "StandardToken",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -15065,10 +14916,7 @@
                       "id": 2876,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "4984:7:2",
                       "typeDescriptions": {
@@ -15181,10 +15029,7 @@
                       "id": 2884,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "5024:7:2",
                       "typeDescriptions": {
@@ -15340,10 +15185,7 @@
                       "id": 2892,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "5070:7:2",
                       "typeDescriptions": {
@@ -16552,10 +16394,7 @@
                       "id": 2986,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "6043:7:2",
                       "typeDescriptions": {
@@ -16711,10 +16550,7 @@
                       "id": 2994,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "6088:7:2",
                       "typeDescriptions": {
@@ -18760,9 +18596,7 @@
               "src": "9397:364:2",
               "statements": [
                 {
-                  "assignments": [
-                    3158
-                  ],
+                  "assignments": [3158],
                   "declarations": [
                     {
                       "constant": false,
@@ -19562,23 +19396,12 @@
             "src": "9787:13:2"
           }
         ],
-        "contractDependencies": [
-          2555,
-          2810,
-          2850,
-          3209
-        ],
+        "contractDependencies": [2555, 2810, 2850, 3209],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 3293,
-        "linearizedBaseContracts": [
-          3293,
-          3209,
-          2810,
-          2850,
-          2555
-        ],
+        "linearizedBaseContracts": [3293, 3209, 2810, 2850, 2555],
         "name": "LRC_v2",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -20009,10 +19832,7 @@
                       "id": 3249,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3348,
                       "src": "10339:7:2",
                       "typeDescriptions": {
@@ -20146,9 +19966,7 @@
                                 "id": 3269,
                                 "name": "transfer",
                                 "nodeType": "Identifier",
-                                "overloadedDeclarations": [
-                                  2797
-                                ],
+                                "overloadedDeclarations": [2797],
                                 "referencedDeclaration": 2797,
                                 "src": "10461:8:2",
                                 "typeDescriptions": {
@@ -20203,10 +20021,7 @@
                             "id": 3268,
                             "name": "require",
                             "nodeType": "Identifier",
-                            "overloadedDeclarations": [
-                              3348,
-                              3349
-                            ],
+                            "overloadedDeclarations": [3348, 3349],
                             "referencedDeclaration": 3349,
                             "src": "10453:7:2",
                             "typeDescriptions": {
@@ -20297,9 +20112,7 @@
                   },
                   "id": 3281,
                   "initializationExpression": {
-                    "assignments": [
-                      3258
-                    ],
+                    "assignments": [3258],
                     "declarations": [
                       {
                         "constant": false,
@@ -20554,10 +20367,7 @@
                       "id": 3288,
                       "name": "revert",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3350,
-                        3351
-                      ],
+                      "overloadedDeclarations": [3350, 3351],
                       "referencedDeclaration": 3350,
                       "src": "10602:6:2",
                       "typeDescriptions": {
@@ -20695,7 +20505,7 @@
         }
       },
       "links": {},
-      "address": "0xe1e03fccC027A86A1C6948713A405d6ee8a79445",
+      "address": "0x68e4F3cBc60be84DCC222886aDFa07805C2F0e5B",
       "transactionHash": "0x95de74c4bc12684492c028c0a171532d154b7e0fe5f0c1bae1c77bdf1fcd173e"
     }
   },

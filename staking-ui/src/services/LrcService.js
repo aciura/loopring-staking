@@ -44,7 +44,6 @@ const getLrcAllowances = accounts => {
 const setLrcAllowance = (address, lrcAmountInWei) => {
   const spenderAddress = userStakingPoolContract._address
   console.log('setLrcAllowance', address, spenderAddress, lrcAmountInWei)
-
   return loopringContract.methods
     .approve(spenderAddress, lrcAmountInWei)
     .send({ from: address })
@@ -61,14 +60,19 @@ const stake = (address, lrcAmountInWei) => {
 
 const getUserStaking = address => {
   console.log('getUserStaking', address)
-
   return userStakingPoolContract.methods.getUserStaking(address).call()
 }
 
 const claimReward = address => {
   console.log('claimReward', address)
-
   return userStakingPoolContract.methods.claim().send({ from: address })
+}
+
+const withdraw = (address, lrcAmountInWei) => {
+  console.log('withdraw', address)
+  return userStakingPoolContract.methods
+    .withdraw(lrcAmountInWei)
+    .send({ from: address })
 }
 
 const LrcService = {
@@ -78,5 +82,6 @@ const LrcService = {
   getUserStaking,
   stake,
   claimReward,
+  withdraw,
 }
 export default LrcService
