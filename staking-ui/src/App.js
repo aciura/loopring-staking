@@ -1,33 +1,68 @@
 import React from 'react'
 import { Account } from './components/Account/Account'
-import { web3, loopringContract, userStakingPoolContract } from './LrcContract'
+import {
+  getEthAccounts,
+  loopringContract,
+  userStakingPoolContract,
+  initWeb3,
+  initTruffle,
+} from './LrcContract'
 
 import styles from './App.module.scss'
 
 function App() {
   const [accounts, setAccounts] = React.useState([])
+  const [selectedAccount, setSelectedAccount] = React.useState()
 
+  // TODO add a 'connect' button that will connect to MetaMask or other web3 provider
   React.useEffect(() => {
     if (accounts.length === 0) {
-      web3.eth.getAccounts().then(_accounts => {
+      getEthAccounts().then((_accounts) => {
         setAccounts(_accounts)
+        if (_accounts.length > 0) {
+          setSelectedAccount(_accounts[0])
+        }
       })
     }
   }, [accounts])
+
+  const connect = (e) => {
+    initWeb3()
+    e.preventDefault()
+  }
+
+  const connectLocal = (e) => {
+    initTruffle().then(() => {
+      initWeb3()
+    })
+  }
+
+  const accountSelected = (e) => {
+    setSelectedAccount(e.target.value)
+  }
 
   return (
     <div className={styles.App}>
       <div>
         <h2>Contract addresses</h2>
-        <div>Loopring token contract: {loopringContract._address}</div>
+        <button onClick={connect}>Connect</button>
+        <button onClick={connectLocal}>Test Connect Local</button>
+        <div>Loopring token contract: {loopringContract?._address}</div>
         <div>
           Loopring User Staking Pool contract:&nbsp;
-          {userStakingPoolContract._address}
+          {userStakingPoolContract?._address}
         </div>
         <h2>Accounts</h2>
-        {accounts.map(account => (
-          <Account key={account} address={account} />
-        ))}
+        <select onChange={accountSelected}>
+          {accounts.map((account) => (
+            <option key={account} value={account}>
+              {account}
+            </option>
+          ))}
+        </select>
+        {selectedAccount && (
+          <Account key={selectedAccount} address={selectedAccount} />
+        )}
       </div>
     </div>
   )

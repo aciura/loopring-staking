@@ -9,29 +9,32 @@ export function Account({ address }) {
   const [allowance, setAllowance] = React.useState(null)
   const [newAllowance, setNewAllowance] = React.useState(0)
 
-  const refreshAccountInfo = address => {
-    LrcService.getLrcBalances([address])
-      .then(balances => {
-        setBalance(balances[0]?.balance)
-      })
-      .catch(error => {
-        console.error('getLrcBalances', error)
-      })
-    LrcService.getLrcAllowances([address])
-      .then(allowances => {
-        console.log('allowances', allowances)
-        setAllowance(Object.values(allowances[0])[0])
-      })
-      .catch(error => {
-        console.error('getLrcAllowances', error)
-      })
-  }
+  const refreshAccountInfo = React.useCallback(
+    (address) => {
+      LrcService.getLrcBalances([address])
+        .then((balances) => {
+          setBalance(balances[0]?.balance)
+        })
+        .catch((error) => {
+          console.error('getLrcBalances', error)
+        })
+      LrcService.getLrcAllowances([address])
+        .then((allowances) => {
+          console.log('allowances', allowances)
+          setAllowance(Object.values(allowances[0])[0])
+        })
+        .catch((error) => {
+          console.error('getLrcAllowances', error)
+        })
+    },
+    [address],
+  )
 
   React.useEffect(() => {
     refreshAccountInfo(address)
   }, [address, refreshAccountInfo])
 
-  const updateAllowance = e => {
+  const updateAllowance = (e) => {
     const newValue = e.target.value
 
     console.log('changeAllowance', newValue)
@@ -45,11 +48,11 @@ export function Account({ address }) {
     console.log('submitNewAllowance', newAllowance)
 
     LrcService.setLrcAllowance(address, newAllowance)
-      .then(result => {
+      .then((result) => {
         console.log('submitNewAllowance', result)
         refreshAccountInfo(address)
       })
-      .catch(error => console.error(error))
+      .catch((error) => console.error(error))
   }
 
   return (
