@@ -6,7 +6,7 @@ import styles from './withdraw.module.scss'
 export function Withdraw({
   address,
   stakingData,
-  refreshAccountInfo = _ => {},
+  refreshAccountInfo = (_) => {},
 }) {
   const [error, setError] = React.useState()
   const [amount, setAmount] = React.useState()
@@ -21,14 +21,14 @@ export function Withdraw({
         .then(() => {
           refreshAccountInfo()
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error)
-          setError(error)
+          setError(`Withdraw of ${amount} has failed`)
         })
     } else setError('Amount has to be larger then zero')
   }
 
-  const updateAmount = e => {
+  const updateAmount = (e) => {
     const newValue = +e.target.value
 
     if (newValue >= 0) {

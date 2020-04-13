@@ -5,18 +5,18 @@ import styles from './ClaimComponent.module.scss'
 export function ClaimComponent({
   address,
   stakingData,
-  refreshAccountInfo = _ => {},
+  refreshAccountInfo = (_) => {},
 }) {
   const [error, setError] = React.useState()
   const { pendingReward } = stakingData ?? { pendingReward: 0 }
 
   const claimReward = () => {
     LrcService.claimReward(address)
-      .then(result => {
+      .then((result) => {
         console.log('claimReward result', result)
         refreshAccountInfo()
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error)
         setError(error)
       })
@@ -26,7 +26,7 @@ export function ClaimComponent({
     <div className={styles.claim}>
       Pending Reward:&nbsp;{pendingReward}
       <button onClick={claimReward}>Claim Reward</button>
-      {error && <div className={styles.error}>{error?.toString()}</div>}
+      {error && <div className={styles.error}>Claim reward has failed</div>}
     </div>
   )
 }

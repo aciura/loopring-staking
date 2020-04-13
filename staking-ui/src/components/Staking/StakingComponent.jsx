@@ -16,31 +16,31 @@ export function StakingComponent({
   address,
   allowance,
   balance,
-  refreshAccountInfo = _ => {},
+  refreshAccountInfo = (_) => {},
 }) {
   const [newStakeAmount, setNewStakeAmount] = React.useState(0)
   const [stakingData, setStakingData] = React.useState(null)
   const [error, setError] = React.useState(null)
 
-  const refreshAddressStaking = address => {
-    LrcService.getUserStaking(address).then(result => {
+  const refreshAddressStaking = (address) => {
+    LrcService.getUserStaking(address).then((result) => {
       setStakingData(result)
     })
     refreshAccountInfo(address)
   }
 
-  const updateAmount = e => {
+  const updateAmount = (e) => {
     const newAmount = e.target.value
     if (newAmount > 0) setNewStakeAmount(newAmount)
   }
 
   const stakeLrc = () => {
     LrcService.stake(address, newStakeAmount)
-      .then(result => {
+      .then((result) => {
         console.log(result)
         refreshAddressStaking(address)
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error)
         setError(error.toString())
       })
@@ -50,7 +50,7 @@ export function StakingComponent({
     refreshAddressStaking(address)
   }, [address])
 
-  const getWaitTimeInDays = waitTimeInSec => {
+  const getWaitTimeInDays = (waitTimeInSec) => {
     return (waitTimeInSec / 60 / 60 / 24).toFixed(2)
   }
 
@@ -70,7 +70,7 @@ export function StakingComponent({
       </div>
       <input type="number" value={newStakeAmount} onChange={updateAmount} />
       <input type="submit" value="Stake" onClick={stakeLrc} />
-      {!!error && <div style={{ color: 'red' }}>{error}</div>}
+      {!!error && <div style={{ color: 'red' }}>Staking LRC has failed</div>}
 
       <ClaimComponent
         stakingData={stakingData}

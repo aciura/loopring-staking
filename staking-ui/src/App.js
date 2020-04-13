@@ -14,7 +14,6 @@ function App() {
   const [accounts, setAccounts] = React.useState([])
   const [selectedAccount, setSelectedAccount] = React.useState()
 
-  // TODO add a 'connect' button that will connect to MetaMask or other web3 provider
   React.useEffect(() => {
     if (accounts.length === 0) {
       getEthAccounts().then((_accounts) => {
