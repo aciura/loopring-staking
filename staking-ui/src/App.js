@@ -6,7 +6,7 @@ import {
   userStakingPoolContract,
   initWeb3,
   initTruffle,
-} from './LrcContract'
+} from './services/Ethereum'
 
 import styles from './App.module.scss'
 

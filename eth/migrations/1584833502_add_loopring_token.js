@@ -2,7 +2,7 @@ const Loopring_LRC_v2 = artifacts.require("LRC_v2");
 const UserStakingPool = artifacts.require("UserStakingPool");
 const ProtocolFeeVault = artifacts.require("ProtocolFeeVault");
 
-module.exports = function(_deployer) {
+module.exports = function (_deployer) {
   _deployer.deploy(Loopring_LRC_v2);
 
   _deployer.link(Loopring_LRC_v2, UserStakingPool);

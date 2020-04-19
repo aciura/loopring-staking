@@ -18,7 +18,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-pragma solidity ^0.5.11;
+pragma solidity >=0.5.11;
 
 
 /// @title ERC20 Token Interface
@@ -625,6 +625,7 @@ contract ITokenSeller {
 
 /// @title An Implementation of IProtocolFeeVault.
 /// @author Daniel Wang - <daniel@loopring.org>
+/// https://etherscan.io/address/feevault.lrctoken.eth#code
 contract ProtocolFeeVault is Claimable, ReentrancyGuard, IProtocolFeeVault {
     using AddressUtil for address;
     using AddressUtil for address payable;

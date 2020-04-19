@@ -1,40 +1,41 @@
-import { loopringContract, userStakingPoolContract } from '../LrcContract'
+import Web3 from 'web3'
+import { loopringContract, userStakingPoolContract } from './Ethereum'
 
-const getLrcBalances = accounts => {
+const getLrcBalances = (accounts) => {
   console.log('getLrcBalances', accounts)
 
-  const balances = accounts.map(acc =>
+  const balances = accounts.map((acc) =>
     loopringContract.methods
       .balanceOf(acc)
       .call()
-      .then(balance => {
+      .then((balance) => {
         console.log(`Acc ${acc} balance:`, balance)
-        return { address: acc, balance }
+        return { address: acc, balance: Web3.utils.toBN(balance) }
       }),
   )
 
   console.log('balances', balances)
 
   return Promise.all(balances)
-    .then(resolved => {
+    .then((resolved) => {
       console.log('Promise.all resolved', resolved)
       return resolved
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error)
       return []
     })
 }
 
-const getLrcAllowances = accounts => {
+const getLrcAllowances = (accounts) => {
   const spenderAddress = userStakingPoolContract._address
   console.log('getLrcAllowances', accounts, spenderAddress)
 
-  const allowances = accounts.map(address =>
+  const allowances = accounts.map((address) =>
     loopringContract.methods
       .allowance(address, spenderAddress)
       .call()
-      .then(allowance => ({ [address]: allowance })),
+      .then((allowance) => ({ [address]: allowance })),
   )
   console.log(allowances)
 
@@ -47,7 +48,7 @@ const setLrcAllowance = (address, lrcAmountInWei) => {
   return loopringContract.methods
     .approve(spenderAddress, lrcAmountInWei)
     .send({ from: address })
-    .then(result => result)
+    .then((result) => result)
 }
 
 const stake = (address, lrcAmountInWei) => {
@@ -58,12 +59,12 @@ const stake = (address, lrcAmountInWei) => {
     .send({ from: address, gasLimit: 200000 })
 }
 
-const getUserStaking = address => {
+const getUserStaking = (address) => {
   console.log('getUserStaking', address)
   return userStakingPoolContract.methods.getUserStaking(address).call()
 }
 
-const claimReward = address => {
+const claimReward = (address) => {
   console.log('claimReward', address)
   return userStakingPoolContract.methods.claim().send({ from: address })
 }

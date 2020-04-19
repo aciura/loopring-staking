@@ -1,6 +1,6 @@
 import Web3 from 'web3'
-import LrcContract from './contracts/LRC_v2.json'
-import UserStakingPool from './contracts/UserStakingPool.json'
+import LrcContract from '../contracts/LRC_v2.json'
+import UserStakingPool from '../contracts/UserStakingPool.json'
 
 let web3 = null
 const getWeb3 = async () => {

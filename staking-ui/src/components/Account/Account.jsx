@@ -1,7 +1,7 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
 import { StakingComponent } from '../Staking/StakingComponent'
-
+import Web3 from 'web3'
 import styles from './Account.module.scss'
 
 export function Account({ address }) {
@@ -58,8 +58,8 @@ export function Account({ address }) {
   return (
     <div className={styles.Account}>
       <h3>Address: {address}</h3>
-      <div>balance: {balance}</div>
-      <div>allowance: {allowance}</div>
+      <div>balance: {balance && Web3.utils.fromWei(balance)} LRC</div>
+      <div>allowance: {allowance} LRC</div>
       Allow spending:&nbsp;
       <input type="number" value={newAllowance} onChange={updateAllowance} />
       <input type="submit" value="Approve" onClick={submitNewAllowance} />
