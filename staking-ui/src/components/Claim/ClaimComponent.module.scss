@@ -1,8 +1,12 @@
+@import '../../styles/mix';
+
 .claim {
   margin: 5px;
   border: 1px solid green;
   padding: 1rem;
-  background-color: lightgreen;
+  // background-color: lightgreen;
+
+  // @include neumorphism;
 
   .error {
     color: red;

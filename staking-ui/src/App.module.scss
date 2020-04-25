@@ -1,15 +1,5 @@
-// @use 'mix';
-// @use 'colors';
-$grey: #7d8491;
-$blue-color: #4381c1;
-$ligt-white: #d7dedc;
-
-@mixin neumorphism {
-  border-radius: 40px;
-  background: #7d8491;
-  box-shadow: 5px 5px 28px #5b606a, -5px -5px 28px #9fa8b8;
-  border-style: none;
-}
+@import 'styles/mix';
+@import 'styles/colors';
 
 .App {
   text-align: center;
