@@ -1,6 +1,7 @@
 import Web3 from 'web3'
 import LrcContract from '../contracts/LRC_v2.json'
 import UserStakingPool from '../contracts/UserStakingPool.json'
+import ProtocolFeeVault from '../contracts/ProtocolFeeVault.json'
 
 let web3 = null
 const getWeb3 = async () => {
@@ -27,17 +28,20 @@ const getWeb3 = async () => {
 }
 
 export const initTruffle = async () => {
-  // const localNode = "http://127.0.0.1:9545/"; //Truffle develop
+  // const localNode = 'http://127.0.0.1:9545/' //Truffle develop
   const localNode = 'http://127.0.0.1:7545' //GANASHE node
   console.log(`No web3 instance injected, using ${localNode} web3.`)
   web3 = new Web3(localNode)
 }
 
 const lrcNetworkDeploymentKey = Object.keys(LrcContract.networks)[0]
-export let loopringContract
+export let loopringContract = null
 
 const uspNetworkDeploymentKey = Object.keys(UserStakingPool.networks)[0]
-export let userStakingPoolContract
+export let userStakingPoolContract = null
+
+const ProtocolFeeVaultDeploymentKey = Object.keys(ProtocolFeeVault.networks)[0]
+export let protocolFeeVaultContract = null
 
 export const initWeb3 = async () => {
   return getWeb3().then((web3) => {
@@ -49,6 +53,11 @@ export const initWeb3 = async () => {
     userStakingPoolContract = new web3.eth.Contract(
       UserStakingPool.abi,
       UserStakingPool.networks[uspNetworkDeploymentKey].address,
+    )
+
+    protocolFeeVaultContract = new web3.eth.Contract(
+      ProtocolFeeVault.abi,
+      ProtocolFeeVault.networks[ProtocolFeeVaultDeploymentKey].address,
     )
   })
 }
