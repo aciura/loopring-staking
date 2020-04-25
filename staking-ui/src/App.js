@@ -4,6 +4,7 @@ import {
   getEthAccounts,
   loopringContract,
   userStakingPoolContract,
+  protocolFeeVaultContract,
   initWeb3,
   initTruffle,
 } from './services/Ethereum'
@@ -41,15 +42,25 @@ function App() {
   }
 
   return (
-    <div className={styles.App}>
-      <div>
-        <h2>Contract addresses</h2>
-        <button onClick={connect}>Connect</button>
-        <button onClick={connectLocal}>Test Connect Local</button>
+    <main className={styles.App}>
+      <h2>Contract addresses</h2>
+      <section className={styles.container}>
+        <div className={styles.connectContainer}>
+          <h4>Loopring Staking</h4>
+          <button className={styles.connectButton} onClick={connect}>
+            Connect
+          </button>
+        </div>
+        <button className={styles.testBtn} onClick={connectLocal}>
+          Test Connect Local
+        </button>
         <div>Loopring token contract: {loopringContract?._address}</div>
         <div>
           Loopring User Staking Pool contract:&nbsp;
           {userStakingPoolContract?._address}
+        </div>
+        <div>
+          Protocol Fee Vault Contract: {protocolFeeVaultContract?._address}
         </div>
         <h2>Accounts</h2>
         <select onChange={accountSelected}>
@@ -62,8 +73,8 @@ function App() {
         {selectedAccount && (
           <Account key={selectedAccount} address={selectedAccount} />
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
 

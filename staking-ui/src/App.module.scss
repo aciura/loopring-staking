@@ -1,3 +1,73 @@
+// @use 'mix';
+// @use 'colors';
+$grey: #7d8491;
+$blue-color: #4381c1;
+$ligt-white: #d7dedc;
+
+@mixin neumorphism {
+  border-radius: 40px;
+  background: #7d8491;
+  box-shadow: 5px 5px 28px #5b606a, -5px -5px 28px #9fa8b8;
+  border-style: none;
+}
+
 .App {
   text-align: center;
+  background: #7d8491;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+
+    .connectContainer {
+      @include neumorphism;
+
+      padding: 1.8rem;
+      font-size: 20px;
+      width: 70%;
+      max-width: 250px;
+
+      h4 {
+        color: $ligt-white;
+      }
+
+      .connectButton {
+        border-radius: 83px;
+        background: #7d8491;
+        box-shadow: 13px 13px 41px #5f646e, -13px -13px 41px #9ba4b4;
+        border-style: none;
+        padding: 2.6rem 1.8rem;
+        color: $ligt-white;
+        font-weight: bold;
+
+        margin: 1rem;
+        outline: none;
+
+        transition: all 1s;
+
+        &:hover {
+          border-radius: 83px;
+          background: linear-gradient(145deg, #868d9b, #717783);
+          box-shadow: 10px 10px 20px #5f646e, -10px -10px 20px #9ba4b4;
+        }
+
+        &:active {
+          border-radius: 83px;
+          background: linear-gradient(145deg, #868d9b, #717783);
+          box-shadow: 5px 5px 10px #5f646e, -5px -5px 10px #9ba4b4;
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.testBtn {
+  background-color: transparent;
+  border: 2px solid grey;
 }
