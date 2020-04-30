@@ -31044,11 +31044,11 @@
       },
       "links": {},
       "address": "0x9a9C43276Fb9a02D5cEa7f2037C2BDC2F27b1130",
-      "transactionHash": "0xcce48a2e938b5973de032762154d418969f4a72530078f330f62a6fc08ec0e63"
+      "transactionHash": "0x225a22544fef77bdcfd379cf1af0dbb6afe55b56b6f17eeb33f7f27be928fd90"
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-04-20T08:39:08.948Z",
+  "updatedAt": "2020-04-28T17:28:47.730Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Daniel Wang - <daniel@loopring.org> https://etherscan.io/address/feevault.lrctoken.eth#code",

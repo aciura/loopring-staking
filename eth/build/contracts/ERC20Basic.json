@@ -20319,7 +20319,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-04-20T08:39:06.138Z",
+  "updatedAt": "2020-04-28T17:28:45.111Z",
   "devdoc": {
     "details": "Simpler version of ERC20 interfacesee https://github.com/ethereum/EIPs/issues/179",
     "methods": {},

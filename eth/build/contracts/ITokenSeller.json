@@ -30611,7 +30611,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-04-20T08:39:05.938Z",
+  "updatedAt": "2020-04-28T17:28:44.949Z",
   "devdoc": {
     "author": "Daniel Wang  - <daniel@loopring.org>",
     "details": "Use this contract to sell tokenS for as many tokenB.",

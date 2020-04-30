@@ -37080,11 +37080,11 @@
       },
       "links": {},
       "address": "0x8E98c72eeFE31e44353000791839Fd5Eb6E70461",
-      "transactionHash": "0x3aa53fae49db0d03e8aae2179ce96233f27a6d65a7ff82d3e11c5d445e685a89"
+      "transactionHash": "0x956e82e79f28ff536c490576e5b36dfb18ccf258e590dbae26a79271da44f36f"
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-04-20T08:39:08.913Z",
+  "updatedAt": "2020-04-28T17:28:47.706Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
