@@ -56,7 +56,7 @@ const stake = (address, lrcAmountInWei) => {
 
   return userStakingPoolContract.methods
     .stake(lrcAmountInWei)
-    .send({ from: address, gasLimit: 200000 })
+    .send({ from: address, gasLimit: 2000000 })
 }
 
 const getUserStaking = (address) => {
@@ -76,6 +76,12 @@ const withdraw = (address, lrcAmountInWei) => {
     .send({ from: address })
 }
 
+const getTotalStaking = () => {
+  console.log('getTotalStaking')
+
+  return userStakingPoolContract.methods.getTotalStaking().call()
+}
+
 const LrcService = {
   getLrcBalances,
   getLrcAllowances,
@@ -84,5 +90,6 @@ const LrcService = {
   stake,
   claimReward,
   withdraw,
+  getTotalStaking,
 }
 export default LrcService

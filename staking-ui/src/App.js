@@ -11,25 +11,45 @@ import {
 
 import styles from './App.module.scss'
 
+function Connect({ onConnected, setAccounts }) {
+  const connect = (e) => {
+    initWeb3().then((web3) => {
+      e.preventDefault()
+      onConnected()
+      getEthAccounts()
+        .then((_accounts) => {
+          setAccounts(_accounts)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
+  }
+
+  return (
+    <div className={styles.connectContainer}>
+      <h4>Loopring Staking</h4>
+      <button className={styles.connectButton} onClick={connect}>
+        Connect
+      </button>
+    </div>
+  )
+}
+
 function App() {
   const [accounts, setAccounts] = React.useState([])
   const [selectedAccount, setSelectedAccount] = React.useState()
+  const [connected, setConnected] = React.useState(false)
+
+  const onConnected = () => {
+    setConnected(true)
+  }
 
   React.useEffect(() => {
-    if (accounts.length === 0) {
-      getEthAccounts().then((_accounts) => {
-        setAccounts(_accounts)
-        if (_accounts.length > 0) {
-          setSelectedAccount(_accounts[0])
-        }
-      })
+    if (accounts.length > 0) {
+      setSelectedAccount(accounts[0])
     }
   }, [accounts])
-
-  const connect = (e) => {
-    initWeb3()
-    e.preventDefault()
-  }
 
   const connectLocal = (e) => {
     initTruffle().then(() => {
@@ -45,12 +65,9 @@ function App() {
     <main className={styles.App}>
       <h2>Contract addresses</h2>
       <section className={styles.container}>
-        <div className={styles.connectContainer}>
-          <h4>Loopring Staking</h4>
-          <button className={styles.connectButton} onClick={connect}>
-            Connect
-          </button>
-        </div>
+        {!connected && (
+          <Connect setAccounts={setAccounts} onConnected={onConnected} />
+        )}
         <button className={styles.testBtn} onClick={connectLocal}>
           Test Connect Local
         </button>

@@ -28,8 +28,8 @@ const getWeb3 = async () => {
 }
 
 export const initTruffle = async () => {
-  // const localNode = 'http://127.0.0.1:9545/' //Truffle develop
-  const localNode = 'http://127.0.0.1:7545' //GANASHE node
+  const localNode = 'http://127.0.0.1:9545/' //Truffle develop
+  // const localNode = 'http://127.0.0.1:7545' //GANASHE node
   console.log(`No web3 instance injected, using ${localNode} web3.`)
   web3 = new Web3(localNode)
 }
@@ -59,6 +59,8 @@ export const initWeb3 = async () => {
       ProtocolFeeVault.abi,
       ProtocolFeeVault.networks[ProtocolFeeVaultDeploymentKey].address,
     )
+
+    return web3
   })
 }
 
