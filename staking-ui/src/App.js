@@ -63,22 +63,16 @@ function App() {
 
   return (
     <main className={styles.App}>
-      <h2>Contract addresses</h2>
       <section className={styles.container}>
         {!connected && (
-          <Connect setAccounts={setAccounts} onConnected={onConnected} />
+          <>
+            <Connect setAccounts={setAccounts} onConnected={onConnected} />
+            <button className={styles.testBtn} onClick={connectLocal}>
+              Test Connect Local
+            </button>
+          </>
         )}
-        <button className={styles.testBtn} onClick={connectLocal}>
-          Test Connect Local
-        </button>
-        <div>Loopring token contract: {loopringContract?._address}</div>
-        <div>
-          Loopring User Staking Pool contract:&nbsp;
-          {userStakingPoolContract?._address}
-        </div>
-        <div>
-          Protocol Fee Vault Contract: {protocolFeeVaultContract?._address}
-        </div>
+
         <h2>Accounts</h2>
         <select onChange={accountSelected}>
           {accounts.map((account) => (
@@ -87,9 +81,19 @@ function App() {
             </option>
           ))}
         </select>
+
         {selectedAccount && (
           <Account key={selectedAccount} address={selectedAccount} />
         )}
+
+        <div>Loopring token contract: {loopringContract?._address}</div>
+        <div>
+          Loopring User Staking Pool contract:&nbsp;
+          {userStakingPoolContract?._address}
+        </div>
+        <div>
+          Protocol Fee Vault Contract: {protocolFeeVaultContract?._address}
+        </div>
       </section>
     </main>
   )

@@ -14,11 +14,9 @@ const getLrcBalances = (accounts) => {
       }),
   )
 
-  console.log('balances', balances)
-
   return Promise.all(balances)
     .then((resolved) => {
-      console.log('Promise.all resolved', resolved)
+      // console.log('Promise.all resolved', resolved)
       return resolved
     })
     .catch((error) => {
@@ -29,7 +27,7 @@ const getLrcBalances = (accounts) => {
 
 const getLrcAllowances = (accounts) => {
   const spenderAddress = userStakingPoolContract._address
-  console.log('getLrcAllowances', accounts, spenderAddress)
+  console.log('getLrcAllowances', { accounts, spenderAddress })
 
   const allowances = accounts.map((address) =>
     loopringContract.methods
@@ -37,14 +35,14 @@ const getLrcAllowances = (accounts) => {
       .call()
       .then((allowance) => ({ [address]: allowance })),
   )
-  console.log(allowances)
 
   return Promise.all(allowances)
 }
 
 const setLrcAllowance = (address, lrcAmountInWei) => {
   const spenderAddress = userStakingPoolContract._address
-  console.log('setLrcAllowance', address, spenderAddress, lrcAmountInWei)
+  console.log('setLrcAllowance', { address, spenderAddress, lrcAmountInWei })
+
   return loopringContract.methods
     .approve(spenderAddress, lrcAmountInWei)
     .send({ from: address })
@@ -52,7 +50,7 @@ const setLrcAllowance = (address, lrcAmountInWei) => {
 }
 
 const stake = (address, lrcAmountInWei) => {
-  console.log('stake', address, lrcAmountInWei)
+  console.log('stake', { address, lrcAmountInWei })
 
   return userStakingPoolContract.methods
     .stake(lrcAmountInWei)
@@ -70,7 +68,7 @@ const claimReward = (address) => {
 }
 
 const withdraw = (address, lrcAmountInWei) => {
-  console.log('withdraw', address)
+  console.log('withdraw', { address, lrcAmountInWei })
   return userStakingPoolContract.methods
     .withdraw(lrcAmountInWei)
     .send({ from: address })

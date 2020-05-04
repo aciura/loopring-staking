@@ -1,5 +1,6 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
+import { TokenAmount } from '../utils'
 import styles from './ClaimComponent.module.scss'
 
 export function ClaimComponent({
@@ -8,9 +9,9 @@ export function ClaimComponent({
   refreshAccountInfo = (_) => {},
 }) {
   const [error, setError] = React.useState()
-  const [totalStaking, setTotalStaking] = React.useState(0)
+  const [totalStaking, setTotalStaking] = React.useState('')
 
-  const { pendingReward } = stakingData ?? { pendingReward: 0 }
+  const { pendingReward } = stakingData ?? { pendingReward: '0' }
 
   React.useEffect(() => {
     LrcService.getTotalStaking().then((result) => {
@@ -32,9 +33,10 @@ export function ClaimComponent({
 
   return (
     <div className={styles.claim}>
-      Total staking: {totalStaking}
+      Total staking: <TokenAmount amountInWei={totalStaking} symbol="LRC" />
       <br />
-      Pending Reward:&nbsp;{pendingReward}
+      Pending Reward:&nbsp;
+      <TokenAmount amountInWei={pendingReward} symbol="LRC" />
       <button onClick={claimReward}>Claim Reward</button>
       {error && <div className={styles.error}>Claim reward has failed</div>}
     </div>

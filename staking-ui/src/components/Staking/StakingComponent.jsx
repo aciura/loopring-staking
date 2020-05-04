@@ -2,6 +2,7 @@ import React from 'react'
 import LrcService from '../../services/LrcService'
 import { ClaimComponent } from '../Claim/ClaimComponent'
 import { Withdraw } from '../Withdraw/Withdraw'
+import { TokenAmount, convertLrcToWei, weiMin } from '../utils'
 
 import styles from './staking.module.scss'
 
@@ -21,9 +22,11 @@ export function StakingComponent({
   const [newStakeAmount, setNewStakeAmount] = React.useState(0)
   const [stakingData, setStakingData] = React.useState(null)
   const [error, setError] = React.useState(null)
+  console.log('StakingComponent', { allowance, balance, stakingData })
 
   const refreshAddressStaking = (address) => {
     LrcService.getUserStaking(address).then((result) => {
+      console.log('getUserStaking result:', result)
       setStakingData(result)
     })
     refreshAccountInfo(address)
@@ -35,7 +38,9 @@ export function StakingComponent({
   }
 
   const stakeLrc = () => {
-    LrcService.stake(address, newStakeAmount)
+    const newStakeAmountInWei = convertLrcToWei(newStakeAmount)
+
+    LrcService.stake(address, newStakeAmountInWei)
       .then((result) => {
         console.log(result)
         refreshAddressStaking(address)
@@ -57,10 +62,19 @@ export function StakingComponent({
   return (
     <div className={styles.staking}>
       <h4>Staking amount</h4>
-      <div>Stake balance: {stakingData?.balance}</div>
-      <div>Stake max: {Math.min(allowance, balance)}</div>
       <div>
-        withdrawal Wait Time:&nbsp;
+        Stake balance:{' '}
+        <TokenAmount amountInWei={stakingData?.balance} symbol="LRC" />{' '}
+      </div>
+      <div>
+        Stake max:{' '}
+        <TokenAmount
+          amountInWei={+allowance ? weiMin(allowance, balance) : 0}
+          symbol="LRC"
+        />
+      </div>
+      <div>
+        Withdrawal Wait Time:&nbsp;
         {getWaitTimeInDays(stakingData?.withdrawalWaitTime)}
         days
       </div>
@@ -68,7 +82,9 @@ export function StakingComponent({
         Wait time before claiming reward:&nbsp;
         {getWaitTimeInDays(stakingData?.rewardWaitTime)} days
       </div>
+
       <input type="number" value={newStakeAmount} onChange={updateAmount} />
+
       <input type="submit" value="Stake" onClick={stakeLrc} />
       {!!error && <div style={{ color: 'red' }}>Staking LRC has failed</div>}
 

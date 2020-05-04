@@ -1,5 +1,6 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
+import { TokenAmount, convertLrcToWei } from '../utils'
 
 import styles from './withdraw.module.scss'
 
@@ -17,7 +18,8 @@ export function Withdraw({
 
   const withdraw = () => {
     if (amount > 0) {
-      LrcService.withdraw(address, amount)
+      const amountInWei = convertLrcToWei(amount)
+      LrcService.withdraw(address, amountInWei)
         .then(() => {
           refreshAccountInfo()
         })
@@ -38,7 +40,7 @@ export function Withdraw({
 
   return (
     <div className={styles.withdraw}>
-      Withdraw Staked amount: {balance}
+      Withdraw Staked amount: <TokenAmount amountInWei={balance} symbol="LRC" />
       <input type="number" value={amount} onChange={updateAmount} />
       <button onClick={withdraw}>Withdraw</button>
       {error && <div className={styles.error}>{error?.toString()}</div>}

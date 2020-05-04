@@ -1,7 +1,9 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
 import { StakingComponent } from '../Staking/StakingComponent'
-import Web3 from 'web3'
+import { TokenAmount, convertLrcToWei } from '../utils'
+import InputSlider from '../InputSlider/InputSlider'
+
 import styles from './Account.module.scss'
 
 export function Account({ address }) {
@@ -20,7 +22,7 @@ export function Account({ address }) {
         })
       LrcService.getLrcAllowances([address])
         .then((allowances) => {
-          console.log('allowances', allowances)
+          // console.log('allowances', allowances)
           setAllowance(Object.values(allowances[0])[0])
         })
         .catch((error) => {
@@ -34,9 +36,7 @@ export function Account({ address }) {
     refreshAccountInfo(address)
   }, [address, refreshAccountInfo])
 
-  const updateAllowance = (e) => {
-    const newValue = e.target.value
-
+  const updateAllowance = (newValue) => {
     console.log('changeAllowance', newValue)
     if (newValue >= 0) {
       setNewAllowance(newValue)
@@ -46,8 +46,9 @@ export function Account({ address }) {
 
   const submitNewAllowance = () => {
     console.log('submitNewAllowance', newAllowance)
+    const newAllowanceInWei = convertLrcToWei(newAllowance)
 
-    LrcService.setLrcAllowance(address, newAllowance)
+    LrcService.setLrcAllowance(address, newAllowanceInWei)
       .then((result) => {
         console.log('submitNewAllowance', result)
         refreshAccountInfo(address)
@@ -55,13 +56,27 @@ export function Account({ address }) {
       .catch((error) => console.error(error))
   }
 
+  const sliderChange = (sliderValue) => {
+    console.log({ sliderValue })
+    updateAllowance((balance * sliderValue) / 100)
+  }
+
   return (
     <div className={styles.Account}>
       <h3>Address: {address}</h3>
-      <div>balance: {balance && Web3.utils.fromWei(balance)} LRC</div>
-      <div>allowance: {allowance} LRC</div>
+      <div>
+        balance: <TokenAmount amountInWei={balance} symbol="LRC" />
+      </div>
+      <div>
+        allowance: <TokenAmount amountInWei={allowance} symbol="LRC" />{' '}
+      </div>
       Allow spending:&nbsp;
-      <input type="number" value={newAllowance} onChange={updateAllowance} />
+      <input
+        type="number"
+        value={newAllowance}
+        onChange={(e) => updateAllowance(e.target.value)}
+      />
+      <InputSlider onChange={sliderChange} />
       <input type="submit" value="Approve" onClick={submitNewAllowance} />
       <StakingComponent
         address={address}
