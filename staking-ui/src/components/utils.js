@@ -12,8 +12,8 @@ export function convertLrcToWei(amountInLrc) {
 }
 
 export function weiMin(a, b) {
-  if (a == null || a == undefined) return b
-  if (b == null || b == undefined) return a
+  if (a === null || a === undefined) return b
+  if (b === null || b === undefined) return a
 
   const abn = new BN(a)
   const bbn = new BN(b)
@@ -22,7 +22,7 @@ export function weiMin(a, b) {
 }
 
 export function displayWei(amountInWei) {
-  // console.info('displayWei', { type: typeof amountInWei, amountInWei })
+  console.info('displayWei', { type: typeof amountInWei, amountInWei })
 
   if (Web3.utils.isBN(amountInWei)) {
     return Web3.utils.fromWei(amountInWei, 'ether')
@@ -39,7 +39,7 @@ export function displayWei(amountInWei) {
     return Web3.utils.fromWei(bn, 'ether')
   }
 
-  throw 'displayWei error for:' + amountInWei
+  throw Error('displayWei error for:' + amountInWei)
 }
 
 export function TokenAmount({ amountInWei, symbol = 'LRC' }) {

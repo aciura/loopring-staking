@@ -1,42 +1,28 @@
 import Web3 from 'web3'
 import { loopringContract, userStakingPoolContract } from './Ethereum'
 
-const getLrcBalances = (accounts) => {
-  console.log('getLrcBalances', accounts)
+const getLrcBalance = (account) => {
+  console.log('getLrcBalance', account)
 
-  const balances = accounts.map((acc) =>
-    loopringContract.methods
-      .balanceOf(acc)
-      .call()
-      .then((balance) => {
-        console.log(`Acc ${acc} balance:`, balance)
-        return { address: acc, balance: Web3.utils.toBN(balance) }
-      }),
-  )
-
-  return Promise.all(balances)
-    .then((resolved) => {
-      // console.log('Promise.all resolved', resolved)
-      return resolved
+  return loopringContract.methods
+    .balanceOf(account)
+    .call()
+    .then((balance) => {
+      console.log(`Acc ${account} balance:`, balance)
+      return balance
+      // return Web3.utils.toBN(balance)
     })
     .catch((error) => {
       console.error(error)
-      return []
+      return -1
     })
 }
 
-const getLrcAllowances = (accounts) => {
+const getLrcAllowance = (account) => {
   const spenderAddress = userStakingPoolContract._address
-  console.log('getLrcAllowances', { accounts, spenderAddress })
+  console.log('getLrcAllowances', { account, spenderAddress })
 
-  const allowances = accounts.map((address) =>
-    loopringContract.methods
-      .allowance(address, spenderAddress)
-      .call()
-      .then((allowance) => ({ [address]: allowance })),
-  )
-
-  return Promise.all(allowances)
+  return loopringContract.methods.allowance(account, spenderAddress).call()
 }
 
 const setLrcAllowance = (address, lrcAmountInWei) => {
@@ -81,8 +67,8 @@ const getTotalStaking = () => {
 }
 
 const LrcService = {
-  getLrcBalances,
-  getLrcAllowances,
+  getLrcBalance,
+  getLrcAllowance,
   setLrcAllowance,
   getUserStaking,
   stake,

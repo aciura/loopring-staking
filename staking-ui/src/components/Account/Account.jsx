@@ -1,7 +1,8 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
 import { StakingComponent } from '../Staking/StakingComponent'
-import { TokenAmount, convertLrcToWei } from '../utils'
+import { TokenAmount, convertLrcToWei, displayWei } from '../utils'
+import Web3 from 'web3'
 import InputSlider from '../InputSlider/InputSlider'
 
 import styles from './Account.module.scss'
@@ -13,17 +14,19 @@ export function Account({ address }) {
 
   const refreshAccountInfo = React.useCallback(
     (address) => {
-      LrcService.getLrcBalances([address])
-        .then((balances) => {
-          setBalance(balances[0]?.balance)
+      LrcService.getLrcBalance(address)
+        .then((balance) => {
+          setBalance(balance)
         })
         .catch((error) => {
           console.error('getLrcBalances', error)
         })
-      LrcService.getLrcAllowances([address])
-        .then((allowances) => {
+
+      LrcService.getLrcAllowance(address)
+        .then((allowance) => {
           // console.log('allowances', allowances)
-          setAllowance(Object.values(allowances[0])[0])
+          const allowanceInWei = allowance
+          setAllowance(displayWei(allowanceInWei))
         })
         .catch((error) => {
           console.error('getLrcAllowances', error)
@@ -35,14 +38,6 @@ export function Account({ address }) {
   React.useEffect(() => {
     refreshAccountInfo(address)
   }, [address, refreshAccountInfo])
-
-  const updateAllowance = (newValue) => {
-    console.log('changeAllowance', newValue)
-    if (newValue >= 0) {
-      setNewAllowance(newValue)
-      refreshAccountInfo(address)
-    }
-  }
 
   const submitNewAllowance = () => {
     console.log('submitNewAllowance', newAllowance)
@@ -56,9 +51,22 @@ export function Account({ address }) {
       .catch((error) => console.error(error))
   }
 
+  const updateAllowance = (newValue) => {
+    console.log('changeAllowance', newValue)
+    if (newValue >= 0) {
+      setNewAllowance(newValue)
+    }
+  }
+
   const sliderChange = (sliderValue) => {
-    console.log({ sliderValue })
-    updateAllowance((balance * sliderValue) / 100)
+    console.log('sliderChange', { balance, sliderValue })
+    const balanceBn = new Web3.utils.BN(balance)
+    balanceBn.imuln(+sliderValue)
+    console.log(balanceBn.toString())
+    balanceBn.idivn(100)
+    console.log(balanceBn.toString())
+
+    updateAllowance(balanceBn.toString())
   }
 
   return (
@@ -72,8 +80,8 @@ export function Account({ address }) {
       </div>
       Allow spending:&nbsp;
       <input
-        type="number"
-        value={newAllowance}
+        type="text"
+        value={displayWei(newAllowance)}
         onChange={(e) => updateAllowance(e.target.value)}
       />
       <InputSlider onChange={sliderChange} />
