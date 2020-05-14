@@ -9,8 +9,7 @@ const getLrcBalance = (account) => {
     .call()
     .then((balance) => {
       console.log(`Acc ${account} balance:`, balance)
-      return balance
-      // return Web3.utils.toBN(balance)
+      return Web3.utils.toBN(balance)
     })
     .catch((error) => {
       console.error(error)
@@ -22,7 +21,17 @@ const getLrcAllowance = (account) => {
   const spenderAddress = userStakingPoolContract._address
   console.log('getLrcAllowances', { account, spenderAddress })
 
-  return loopringContract.methods.allowance(account, spenderAddress).call()
+  return loopringContract.methods
+    .allowance(account, spenderAddress)
+    .call()
+    .then((allowance) => {
+      console.log(`Acc ${account} allowance:`, allowance)
+      return Web3.utils.toBN(allowance)
+    })
+    .catch((error) => {
+      console.error(error)
+      return -1
+    })
 }
 
 const setLrcAllowance = (address, lrcAmountInWei) => {

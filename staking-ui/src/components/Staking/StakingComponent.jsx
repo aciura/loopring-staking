@@ -2,7 +2,9 @@ import React from 'react'
 import LrcService from '../../services/LrcService'
 import { ClaimComponent } from '../Claim/ClaimComponent'
 import { Withdraw } from '../Withdraw/Withdraw'
-import { TokenAmount, convertLrcToWei, weiMin } from '../utils'
+import { TokenAmount, convertLrcToWei, weiMin, displayWei } from '../utils'
+import InputSlider from '../InputSlider/InputSlider'
+import Web3 from 'web3'
 
 import styles from './staking.module.scss'
 
@@ -22,7 +24,14 @@ export function StakingComponent({
   const [newStakeAmount, setNewStakeAmount] = React.useState(0)
   const [stakingData, setStakingData] = React.useState(null)
   const [error, setError] = React.useState(null)
-  console.log('StakingComponent', { allowance, balance, stakingData })
+  const maxStakeAmount = weiMin(allowance, balance)
+
+  console.log('StakingComponent', {
+    allowance,
+    balance,
+    maxStakeAmount,
+    stakingData,
+  })
 
   const refreshAddressStaking = (address) => {
     LrcService.getUserStaking(address).then((result) => {
@@ -32,15 +41,14 @@ export function StakingComponent({
     refreshAccountInfo(address)
   }
 
-  const updateAmount = (e) => {
-    const newAmount = e.target.value
-    if (newAmount > 0) setNewStakeAmount(newAmount)
+  const updateStakeAmount = (newStakeAmount) => {
+    if (newStakeAmount > 0) setNewStakeAmount(newStakeAmount)
   }
 
   const stakeLrc = () => {
-    const newStakeAmountInWei = convertLrcToWei(newStakeAmount)
+    // const newStakeAmountInWei = convertLrcToWei(newStakeAmount)
 
-    LrcService.stake(address, newStakeAmountInWei)
+    LrcService.stake(address, newStakeAmount)
       .then((result) => {
         console.log(result)
         refreshAddressStaking(address)
@@ -59,6 +67,16 @@ export function StakingComponent({
     return (waitTimeInSec / 60 / 60 / 24).toFixed(2)
   }
 
+  const sliderChange = (sliderValue) => {
+    console.log('sliderChange', { maxStakeAmount, sliderValue })
+    let newStakeAmount = new Web3.utils.BN(maxStakeAmount)
+    newStakeAmount = maxStakeAmount.muln(+sliderValue)
+    newStakeAmount = newStakeAmount.divn(100)
+    console.log(newStakeAmount.toString())
+
+    updateStakeAmount(newStakeAmount)
+  }
+
   return (
     <div className={styles.staking}>
       <h4>Staking amount</h4>
@@ -69,7 +87,7 @@ export function StakingComponent({
       <div>
         Stake max:{' '}
         <TokenAmount
-          amountInWei={+allowance ? weiMin(allowance, balance) : 0}
+          amountInWei={+allowance ? maxStakeAmount : 0}
           symbol="LRC"
         />
       </div>
@@ -83,12 +101,17 @@ export function StakingComponent({
         {getWaitTimeInDays(stakingData?.rewardWaitTime)} days
       </div>
 
-      <input type="number" value={newStakeAmount} onChange={updateAmount} />
+      <input
+        type="number"
+        value={displayWei(newStakeAmount)}
+        onChange={(e) => updateStakeAmount(e.target.value)}
+      />
+      <InputSlider onChange={sliderChange} />
 
       <input type="submit" value="Stake" onClick={stakeLrc} />
       {!!error && <div style={{ color: 'red' }}>Staking LRC has failed</div>}
 
-      <ClaimComponent
+      {/* <ClaimComponent
         stakingData={stakingData}
         address={address}
         refreshAccountInfo={refreshAccountInfo}
@@ -98,7 +121,7 @@ export function StakingComponent({
         stakingData={stakingData}
         address={address}
         refreshAccountInfo={refreshAccountInfo}
-      />
+      /> */}
     </div>
   )
 }

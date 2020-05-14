@@ -23,10 +23,8 @@ export function Account({ address }) {
         })
 
       LrcService.getLrcAllowance(address)
-        .then((allowance) => {
-          // console.log('allowances', allowances)
-          const allowanceInWei = allowance
-          setAllowance(displayWei(allowanceInWei))
+        .then((allowanceInWei) => {
+          setAllowance(allowanceInWei)
         })
         .catch((error) => {
           console.error('getLrcAllowances', error)
@@ -41,9 +39,8 @@ export function Account({ address }) {
 
   const submitNewAllowance = () => {
     console.log('submitNewAllowance', newAllowance)
-    const newAllowanceInWei = convertLrcToWei(newAllowance)
 
-    LrcService.setLrcAllowance(address, newAllowanceInWei)
+    LrcService.setLrcAllowance(address, newAllowance)
       .then((result) => {
         console.log('submitNewAllowance', result)
         refreshAccountInfo(address)
@@ -58,15 +55,22 @@ export function Account({ address }) {
     }
   }
 
+  const allowanceInputChange = (newLrcValue) => {
+    console.log('allowanceInputChange', { newLrcValue })
+    if (+newLrcValue >= 0) {
+      updateAllowance(convertLrcToWei(newLrcValue))
+    }
+  }
+
   const sliderChange = (sliderValue) => {
     console.log('sliderChange', { balance, sliderValue })
-    const balanceBn = new Web3.utils.BN(balance)
-    balanceBn.imuln(+sliderValue)
-    console.log(balanceBn.toString())
-    balanceBn.idivn(100)
-    console.log(balanceBn.toString())
+    let allowanceBn = new Web3.utils.BN(balance)
+    allowanceBn = allowanceBn.muln(+sliderValue)
+    console.log(allowanceBn.toString())
+    allowanceBn = allowanceBn.divn(100)
+    console.log(allowanceBn.toString())
 
-    updateAllowance(balanceBn.toString())
+    updateAllowance(allowanceBn)
   }
 
   return (
@@ -82,16 +86,19 @@ export function Account({ address }) {
       <input
         type="text"
         value={displayWei(newAllowance)}
-        onChange={(e) => updateAllowance(e.target.value)}
+        onChange={(e) => allowanceInputChange(e.target.value)}
       />
-      <InputSlider onChange={sliderChange} />
+      <InputSlider
+        onChange={sliderChange}
+        initialPercent={(allowance / balance) * 100}
+      />
       <input type="submit" value="Approve" onClick={submitNewAllowance} />
-      <StakingComponent
+      {/* <StakingComponent
         address={address}
         allowance={allowance}
         balance={balance}
         refreshAccountInfo={refreshAccountInfo}
-      />
+      /> */}
     </div>
   )
 }
