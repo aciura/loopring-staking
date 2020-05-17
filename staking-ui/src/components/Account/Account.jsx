@@ -1,19 +1,20 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
+import ChangeAmount from '../ChangeAmount/ChangeAmount'
 import { StakingComponent } from '../Staking/StakingComponent'
 import { TokenAmount, convertLrcToWei, displayWei } from '../utils'
-import Web3 from 'web3'
-import InputSlider from '../InputSlider/InputSlider'
 
 import styles from './Account.module.scss'
 
 export function Account({ address }) {
   const [balance, setBalance] = React.useState(null)
   const [allowance, setAllowance] = React.useState(null)
-  const [newAllowance, setNewAllowance] = React.useState(0)
+  const [isLoading, setIsLoading] = React.useState(true)
 
   const refreshAccountInfo = React.useCallback(
     (address) => {
+      setIsLoading(true)
+
       LrcService.getLrcBalance(address)
         .then((balance) => {
           setBalance(balance)
@@ -29,15 +30,13 @@ export function Account({ address }) {
         .catch((error) => {
           console.error('getLrcAllowances', error)
         })
+
+      setIsLoading(false)
     },
     [address],
   )
 
-  React.useEffect(() => {
-    refreshAccountInfo(address)
-  }, [address, refreshAccountInfo])
-
-  const submitNewAllowance = () => {
+  const submitNewAllowance = (newAllowance) => {
     console.log('submitNewAllowance', newAllowance)
 
     LrcService.setLrcAllowance(address, newAllowance)
@@ -48,57 +47,35 @@ export function Account({ address }) {
       .catch((error) => console.error(error))
   }
 
-  const updateAllowance = (newValue) => {
-    console.log('changeAllowance', newValue)
-    if (newValue >= 0) {
-      setNewAllowance(newValue)
-    }
-  }
-
-  const allowanceInputChange = (newLrcValue) => {
-    console.log('allowanceInputChange', { newLrcValue })
-    if (+newLrcValue >= 0) {
-      updateAllowance(convertLrcToWei(newLrcValue))
-    }
-  }
-
-  const sliderChange = (sliderValue) => {
-    console.log('sliderChange', { balance, sliderValue })
-    let allowanceBn = new Web3.utils.BN(balance)
-    allowanceBn = allowanceBn.muln(+sliderValue)
-    console.log(allowanceBn.toString())
-    allowanceBn = allowanceBn.divn(100)
-    console.log(allowanceBn.toString())
-
-    updateAllowance(allowanceBn)
-  }
+  React.useEffect(() => {
+    refreshAccountInfo(address)
+  }, [address, refreshAccountInfo])
 
   return (
     <div className={styles.Account}>
       <h3>Address: {address}</h3>
-      <div>
-        balance: <TokenAmount amountInWei={balance} symbol="LRC" />
-      </div>
-      <div>
-        allowance: <TokenAmount amountInWei={allowance} symbol="LRC" />{' '}
-      </div>
-      Allow spending:&nbsp;
-      <input
-        type="text"
-        value={displayWei(newAllowance)}
-        onChange={(e) => allowanceInputChange(e.target.value)}
-      />
-      <InputSlider
-        onChange={sliderChange}
-        initialPercent={(allowance / balance) * 100}
-      />
-      <input type="submit" value="Approve" onClick={submitNewAllowance} />
-      {/* <StakingComponent
-        address={address}
-        allowance={allowance}
-        balance={balance}
-        refreshAccountInfo={refreshAccountInfo}
-      /> */}
+      {isLoading && <div>Loading...</div>}
+      {!isLoading && (
+        <>
+          <div>
+            balance: <TokenAmount amountInWei={balance} symbol="LRC" />
+          </div>
+          <div>
+            allowance: <TokenAmount amountInWei={allowance} symbol="LRC" />{' '}
+          </div>
+          <ChangeAmount
+            max={balance}
+            amount={allowance}
+            submitAmountChange={submitNewAllowance}
+          />
+          <StakingComponent
+            address={address}
+            allowance={allowance}
+            balance={balance}
+            refreshAccountInfo={refreshAccountInfo}
+          />
+        </>
+      )}
     </div>
   )
 }

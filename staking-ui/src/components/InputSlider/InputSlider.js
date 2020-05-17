@@ -3,13 +3,21 @@ import styles from './InputSlider.module.scss'
 
 function InputSlider({ onChange, initialPercent = 0 }) {
   const init = Math.min(100, Math.ceil(initialPercent))
-  const [rangePercent, setRangePercent] = React.useState(init)
+  const [rangePercent, setRangePercent] = React.useState(0)
+  // console.info('InputSlider', { init, rangePercent })
 
-  console.info('InputSlider', { init, rangePercent })
+  React.useEffect(() => {
+    console.log('InputSlider init changed', {
+      initialPercent,
+      init,
+      rangePercent,
+    })
+    setRangePercent(init)
+  }, [init])
 
   const handleChange = (e) => {
     onChange(e.target.value)
-    setRangePercent(e.target.value)
+    setRangePercent(+e.target.value)
   }
 
   return (
