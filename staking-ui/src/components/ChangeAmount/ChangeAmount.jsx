@@ -3,10 +3,16 @@ import Web3 from 'web3'
 import InputSlider from '../InputSlider/InputSlider'
 import { convertLrcToWei, displayWei } from '../utils'
 
-export default function ChangeAmount({ max, amount, submitAmountChange }) {
+export default function ChangeAmount({
+  text,
+  max,
+  amount,
+  submitAmountChange,
+  tokenSymbol = 'LRC',
+}) {
   const inputRef = React.useRef(null)
   const [hasChanged, setHasChanged] = React.useState(false)
-  const [newAmount, setNewAmount] = React.useState(0)
+  const [newAmount, setNewAmount] = React.useState(amount)
 
   const updateAmount = (newValue) => {
     console.log('updateAmount', newValue)
@@ -35,9 +41,14 @@ export default function ChangeAmount({ max, amount, submitAmountChange }) {
     updateAmount(amountBN)
   }
 
+  const submit = () => {
+    submitAmountChange(newAmount)
+    updateAmount(0)
+  }
+
   return (
     <>
-      Allow spending:&nbsp;
+      <label>{text}</label>
       <input
         type="text"
         ref={inputRef}
@@ -46,16 +57,16 @@ export default function ChangeAmount({ max, amount, submitAmountChange }) {
         }}
         onBlur={(e) => handleBlur(e.target.value)}
       />{' '}
-      LRC
+      {tokenSymbol}
       <input
         type="submit"
         value="Approve"
         disabled={!hasChanged}
-        onClick={() => submitAmountChange(newAmount)}
+        onClick={submit}
       />
       <InputSlider
         onChange={sliderChange}
-        initialPercent={(amount / max) * 100}
+        initialPercent={(newAmount / max) * 100}
       />
     </>
   )

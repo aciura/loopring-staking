@@ -22,7 +22,7 @@ export function weiMin(a, b) {
 }
 
 export function displayWei(amountInWei) {
-  console.info('displayWei', { type: typeof amountInWei, amountInWei })
+  // console.info('displayWei', { type: typeof amountInWei, amountInWei })
 
   if (Web3.utils.isBN(amountInWei)) {
     return Web3.utils.fromWei(amountInWei, 'ether')
@@ -53,4 +53,12 @@ export function TokenAmount({ amountInWei, symbol = 'LRC' }) {
       <span style={{ paddingLeft: '0.5em' }}>{symbol}</span>
     </>
   )
+}
+
+export function getWaitTimeInDays(waitTimeInSec) {
+  const waitTimeInHours = waitTimeInSec / 60 / 60
+  const days = Math.floor(waitTimeInHours / 24).toFixed(0)
+  const hours = Math.floor(waitTimeInHours % 24).toFixed(0)
+  const mins = Math.floor(waitTimeInHours % 60).toFixed(0)
+  return `${days} days, ${hours}h, ${mins}min`
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
-import { TokenAmount, convertLrcToWei } from '../utils'
+import { TokenAmount, convertLrcToWei, getWaitTimeInDays } from '../utils'
 
 import styles from './withdraw.module.scss'
 
@@ -40,6 +40,10 @@ export function Withdraw({
 
   return (
     <div className={styles.withdraw}>
+      <div>
+        Withdrawal Wait Time:&nbsp;
+        {getWaitTimeInDays(withdrawalWaitTime)}
+      </div>
       Withdraw Staked amount: <TokenAmount amountInWei={balance} symbol="LRC" />
       <input type="number" value={amount} onChange={updateAmount} />
       <button onClick={withdraw}>Withdraw</button>

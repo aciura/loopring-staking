@@ -13,8 +13,8 @@ import styles from './App.module.scss'
 
 function Connect({ onConnected, setAccounts }) {
   const connect = (e) => {
+    e.preventDefault()
     initWeb3().then((web3) => {
-      e.preventDefault()
       onConnected()
       getEthAccounts()
         .then((_accounts) => {

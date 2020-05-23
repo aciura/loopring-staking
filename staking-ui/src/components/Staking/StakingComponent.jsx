@@ -2,9 +2,8 @@ import React from 'react'
 import LrcService from '../../services/LrcService'
 import { ClaimComponent } from '../Claim/ClaimComponent'
 import { Withdraw } from '../Withdraw/Withdraw'
-import { TokenAmount, convertLrcToWei, weiMin, displayWei } from '../utils'
+import { TokenAmount, weiMin } from '../utils'
 import ChangeAmount from '../ChangeAmount/ChangeAmount'
-import Web3 from 'web3'
 
 import styles from './staking.module.scss'
 
@@ -21,10 +20,10 @@ export function StakingComponent({
   balance,
   refreshAccountInfo = (_) => {},
 }) {
-  // const [newStakeAmount, setNewStakeAmount] = React.useState(0)
   const [stakingData, setStakingData] = React.useState(null)
   const [error, setError] = React.useState(null)
   const maxStakeAmount = weiMin(allowance, balance)
+  const [newStakeAmount, setNewStakeAmount] = React.useState(0)
 
   console.log('StakingComponent', {
     allowance,
@@ -38,7 +37,6 @@ export function StakingComponent({
       console.log('getUserStaking result:', result)
       setStakingData(result)
     })
-    refreshAccountInfo(address)
   }
 
   const stakeLrc = (newStakeAmount) => {
@@ -46,8 +44,11 @@ export function StakingComponent({
 
     LrcService.stake(address, newStakeAmount)
       .then((result) => {
-        console.log(result)
+        console.log('Staked', result)
+        setError(null)
+        setNewStakeAmount(0)
         refreshAddressStaking(address)
+        refreshAccountInfo(address)
       })
       .catch((error) => {
         console.error(error)
@@ -56,44 +57,34 @@ export function StakingComponent({
   }
 
   React.useEffect(() => {
+    console.log('StakingComponent useEffect')
     refreshAddressStaking(address)
   }, [address])
 
-  const getWaitTimeInDays = (waitTimeInSec) => {
-    return (waitTimeInSec / 60 / 60 / 24).toFixed(2)
-  }
-
   return (
     <div className={styles.staking}>
-      <h4>Staking amount</h4>
+      <h4>Staking</h4>
       <div>
-        Stake balance:{' '}
+        Staked balance:{' '}
         <TokenAmount amountInWei={stakingData?.balance} symbol="LRC" />{' '}
       </div>
       <div>
-        Stake max:{' '}
+        You can stake:{' '}
         <TokenAmount
           amountInWei={+allowance ? maxStakeAmount : 0}
           symbol="LRC"
         />
       </div>
-      <div>
-        Withdrawal Wait Time:&nbsp;
-        {getWaitTimeInDays(stakingData?.withdrawalWaitTime)}
-        days
-      </div>
-      <div>
-        Wait time before claiming reward:&nbsp;
-        {getWaitTimeInDays(stakingData?.rewardWaitTime)} days
-      </div>
 
       <ChangeAmount
+        text={'New Stake:'}
         max={maxStakeAmount}
-        amount={stakingData?.balance ?? 0}
+        amount={newStakeAmount}
         submitAmountChange={stakeLrc}
       />
 
-      {!!error && <div style={{ color: 'red' }}>Staking LRC has failed</div>}
+      {!!error && <div className={styles.error}>Staking LRC has failed</div>}
+
       <ClaimComponent
         stakingData={stakingData}
         address={address}

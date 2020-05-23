@@ -30,8 +30,9 @@ export function Account({ address }) {
         .catch((error) => {
           console.error('getLrcAllowances', error)
         })
-
-      setIsLoading(false)
+        .finally(() => {
+          setIsLoading(false)
+        })
     },
     [address],
   )
@@ -54,28 +55,26 @@ export function Account({ address }) {
   return (
     <div className={styles.Account}>
       <h3>Address: {address}</h3>
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && (
-        <>
-          <div>
-            balance: <TokenAmount amountInWei={balance} symbol="LRC" />
-          </div>
-          <div>
-            allowance: <TokenAmount amountInWei={allowance} symbol="LRC" />{' '}
-          </div>
-          <ChangeAmount
-            max={balance}
-            amount={allowance}
-            submitAmountChange={submitNewAllowance}
-          />
-          <StakingComponent
-            address={address}
-            allowance={allowance}
-            balance={balance}
-            refreshAccountInfo={refreshAccountInfo}
-          />
-        </>
-      )}
+      {/* {isLoading && <div>Loading...</div>} */}
+      <div>
+        Account balance: <TokenAmount amountInWei={balance} symbol="LRC" />
+      </div>
+      <button onClick={() => refreshAccountInfo(address)}>Refresh</button>
+      <div>
+        Current allowance: <TokenAmount amountInWei={allowance} symbol="LRC" />{' '}
+      </div>
+      <ChangeAmount
+        text={'New allowance:'}
+        max={balance}
+        amount={allowance}
+        submitAmountChange={submitNewAllowance}
+      />
+      <StakingComponent
+        address={address}
+        allowance={allowance}
+        balance={balance}
+        refreshAccountInfo={refreshAccountInfo}
+      />
     </div>
   )
 }
