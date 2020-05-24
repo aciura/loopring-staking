@@ -19,6 +19,9 @@ module.exports = function (deployer) {
       deployer.link(LRC_v2, ProtocolFeeVault);
       return deployer.deploy(ProtocolFeeVault, LRC_v2.address).then(() => {
         console.log("3.0 ProtocolFeeVault.address", ProtocolFeeVault.address);
+
+        // let usp = await UserStakingPool.deployed()
+        // usp.setProtocolFeeVault(ProtocolFeeVault.address)
       });
     });
   });
