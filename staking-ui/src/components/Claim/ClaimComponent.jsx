@@ -10,6 +10,7 @@ export function ClaimComponent({
 }) {
   const [error, setError] = React.useState()
   const [totalStaking, setTotalStaking] = React.useState('')
+  const [totalPrize, setTotalPrize] = React.useState(0)
 
   const { pendingReward, rewardWaitTime } = stakingData ?? {
     pendingReward: '0',
@@ -20,7 +21,10 @@ export function ClaimComponent({
     LrcService.getTotalStaking().then((result) => {
       setTotalStaking(result)
     })
-  }, [])
+    LrcService.getProtocolFeeVaultValue().then((feeAmount) => {
+      setTotalPrize(feeAmount)
+    })
+  }, [stakingData])
 
   const claimReward = () => {
     LrcService.claimReward(address)
@@ -36,9 +40,12 @@ export function ClaimComponent({
 
   return (
     <div className={styles.claim}>
-      Total staking: <TokenAmount amountInWei={totalStaking} symbol="LRC" />
+      All users staking sum:{' '}
+      <TokenAmount amountInWei={totalStaking} symbol="LRC" />
       <br />
-      Pending Reward:&nbsp;
+      Total fee prize: <TokenAmount amountInWei={totalPrize} symbol="LRC" />
+      <br />
+      Your pending Reward:&nbsp;
       <TokenAmount amountInWei={pendingReward} symbol="LRC" />
       <div>
         Wait time before claiming reward:&nbsp;

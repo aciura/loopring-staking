@@ -8,8 +8,8 @@ import {
   initWeb3,
   initTruffle,
 } from './services/Ethereum'
-
 import styles from './App.module.scss'
+import { LinkToEtherscan } from './components/utils'
 
 function Connect({ onConnected, setAccounts }) {
   const connect = (e) => {
@@ -86,14 +86,18 @@ function App() {
           <Account key={selectedAccount} address={selectedAccount} />
         )}
 
-        <div>Loopring token contract: {loopringContract?._address}</div>
-        <div>
-          Loopring User Staking Pool contract:&nbsp;
-          {userStakingPoolContract?._address}
-        </div>
-        <div>
-          Protocol Fee Vault Contract: {protocolFeeVaultContract?._address}
-        </div>
+        <LinkToEtherscan
+          label={'Loopring token contract:'}
+          address={loopringContract?._address}
+        ></LinkToEtherscan>
+        <LinkToEtherscan
+          label={'Loopring User Staking Pool contract:'}
+          address={userStakingPoolContract?._address}
+        ></LinkToEtherscan>
+        <LinkToEtherscan
+          label={'Protocol Fee Vault Contract:'}
+          address={protocolFeeVaultContract?._address}
+        ></LinkToEtherscan>
       </section>
     </main>
   )

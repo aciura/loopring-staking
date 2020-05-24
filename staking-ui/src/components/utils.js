@@ -62,3 +62,16 @@ export function getWaitTimeInDays(waitTimeInSec) {
   const mins = Math.floor(waitTimeInHours % 60).toFixed(0)
   return `${days} days, ${hours}h, ${mins}min`
 }
+
+export function LinkToEtherscan({ label, address, children }) {
+  function getUrl(address) {
+    return `https://etherscan.io/address/${address}`
+  }
+  return (
+    <div>
+      {label}&nbsp;
+      <a href={getUrl(address)}>{address}</a>
+      {children}
+    </div>
+  )
+}

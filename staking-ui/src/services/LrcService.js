@@ -1,5 +1,9 @@
 import Web3 from 'web3'
-import { loopringContract, userStakingPoolContract } from './Ethereum'
+import {
+  loopringContract,
+  userStakingPoolContract,
+  protocolFeeVaultContract,
+} from './Ethereum'
 
 const getLrcBalance = (account) => {
   console.log('getLrcBalance', account)
@@ -75,6 +79,24 @@ const getTotalStaking = () => {
   return userStakingPoolContract.methods.getTotalStaking().call()
 }
 
+export const getProtocolFeeVaultValue = () => {
+  console.log('getProtocolFeeVaultValue')
+  return loopringContract.methods
+    .balanceOf(protocolFeeVaultContract._address)
+    .call()
+    .then((balance) => {
+      console.log('protocolFeeVaultContract.address', {
+        address: protocolFeeVaultContract._address,
+        balance,
+      })
+      return Web3.utils.toBN(balance)
+    })
+    .catch((error) => {
+      console.error(error)
+      return 0
+    })
+}
+
 const LrcService = {
   getLrcBalance,
   getLrcAllowance,
@@ -84,5 +106,6 @@ const LrcService = {
   claimReward,
   withdraw,
   getTotalStaking,
+  getProtocolFeeVaultValue,
 }
 export default LrcService
