@@ -58,10 +58,14 @@
   }
 }
 
+:global(h4) {
+  margin: 0.5rem 0 0.5rem;
+}
+
 :global(button) {
   color: #d7dedc;
   padding: 1rem;
-  margin: 1rem;
+  margin-top: 0.5rem;
   border-radius: 10px;
   background: #7d8491;
   box-shadow: 5px 5px 10px #6a707b, -5px -5px 10px #9098a7;

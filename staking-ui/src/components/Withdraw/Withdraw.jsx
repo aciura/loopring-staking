@@ -43,6 +43,8 @@ export function Withdraw({
 
   return (
     <div className={styles.withdraw}>
+      <h4>Withdraw tokens</h4>
+
       <div>
         Withdrawal wait time:&nbsp;
         {getWaitTimeInDays(withdrawalWaitTime)}

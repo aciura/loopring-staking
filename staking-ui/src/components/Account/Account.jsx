@@ -8,7 +8,7 @@ import styles from './Account.module.scss'
 
 export function Account({ address }) {
   const [balance, setBalance] = React.useState(null)
-  const [allowance, setAllowance] = React.useState(null)
+  const [allowance, setAllowance] = React.useState(0)
   const [isLoading, setIsLoading] = React.useState(true)
 
   const refreshAccountInfo = React.useCallback(

@@ -71,7 +71,7 @@ export default function ChangeAmount({
       </button>
       <InputSlider
         onChange={sliderChange}
-        initialPercent={(newAmount / max) * 100}
+        initialPercent={max > 0 ? (newAmount / max) * 100 : 0}
         disabled={isDisabled}
       />
     </div>

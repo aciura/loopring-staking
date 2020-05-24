@@ -48,6 +48,7 @@ export function StakingComponent({
       .catch((error) => {
         console.error(error)
         setError(error.toString())
+        setMessage(null)
       })
   }
 

@@ -3,11 +3,12 @@
 .claim {
   margin: 5px;
   padding: 1rem;
-  // background-color: lightgreen;
-
-  // @include neumorphism;
 
   .error {
-    color: red;
+    color: white;
+    background-color: #ed5755;
+    font-weight: bold;
+    border-radius: 1rem;
+    padding: 1rem;
   }
 }

@@ -1,6 +1,8 @@
 @import '../../styles/mix';
 
 .staking {
+  padding-top: 1px;
+  margin-top: 1rem;
   @include neumorphism;
 }
 
@@ -15,4 +17,7 @@
 .error {
   color: white;
   background-color: #ed5755;
+  font-weight: bold;
+  border-radius: 1rem;
+  padding: 1rem;
 }

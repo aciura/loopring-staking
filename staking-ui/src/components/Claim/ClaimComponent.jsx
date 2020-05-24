@@ -43,21 +43,32 @@ export function ClaimComponent({
   const canClaimReward = rewardWaitTime <= 0
   return (
     <div className={styles.claim}>
-      All users staked tokens:{' '}
-      <TokenAmount amountInWei={totalStaking} symbol="LRC" />
-      <br />
-      Total fee prize: <TokenAmount amountInWei={totalPrize} symbol="LRC" />
-      <br />
-      Your pending reward:&nbsp;
-      <TokenAmount amountInWei={pendingReward} symbol="LRC" />
+      <h4>Claim reward</h4>
+
+      <div>
+        All users staked tokens:{' '}
+        <TokenAmount amountInWei={totalStaking} symbol="LRC" />
+      </div>
+
+      <div>
+        Total fee prize: <TokenAmount amountInWei={totalPrize} symbol="LRC" />
+      </div>
+
+      <div>
+        Your pending reward:&nbsp;
+        <TokenAmount amountInWei={pendingReward} symbol="LRC" />
+      </div>
+
       <div>
         Wait time before claiming reward: &nbsp;
         {getWaitTimeInDays(rewardWaitTime)} &nbsp;
         {rewardWaitTime && <span>({getClaimingDate(rewardWaitTime)})</span>}
       </div>
+
       <button onClick={claimReward} disabled={!canClaimReward}>
         Claim reward
       </button>
+
       {error && <div className={styles.error}>Claim reward has failed</div>}
     </div>
   )
