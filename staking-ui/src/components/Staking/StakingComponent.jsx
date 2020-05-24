@@ -2,7 +2,7 @@ import React from 'react'
 import LrcService from '../../services/LrcService'
 import { ClaimComponent } from '../Claim/ClaimComponent'
 import { Withdraw } from '../Withdraw/Withdraw'
-import { TokenAmount, weiMin } from '../utils'
+import { TokenAmount, weiMin, displayWei } from '../utils'
 import ChangeAmount from '../ChangeAmount/ChangeAmount'
 
 import styles from './staking.module.scss'
@@ -22,19 +22,12 @@ export function StakingComponent({
 }) {
   const [stakingData, setStakingData] = React.useState(null)
   const [error, setError] = React.useState(null)
+  const [message, setMessage] = React.useState(null)
   const maxStakeAmount = weiMin(allowance, balance)
   const [newStakeAmount, setNewStakeAmount] = React.useState(0)
 
-  console.log('StakingComponent render', {
-    allowance: allowance?.toString(),
-    balance: balance?.toString(),
-    maxStakeAmount: maxStakeAmount?.toString(),
-    stakingData: stakingData?.toString(),
-  })
-
   const refreshAddressStaking = (address) => {
     LrcService.getUserStaking(address).then((result) => {
-      console.log('getUserStaking result:', result)
       setStakingData(result)
     })
   }
@@ -46,6 +39,7 @@ export function StakingComponent({
       .then((result) => {
         console.log('Staked', result)
         setError(null)
+        setMessage(`Successfully staked ${displayWei(newStakeAmount)} LRC`)
         setNewStakeAmount(0)
         refreshAddressStaking(address)
         refreshAccountInfo(address)
@@ -82,6 +76,7 @@ export function StakingComponent({
         submitAmountChange={stakeLrc}
       />
 
+      {!!message && <div className={styles.message}>{message}</div>}
       {!!error && <div className={styles.error}>Staking LRC has failed</div>}
 
       <ClaimComponent

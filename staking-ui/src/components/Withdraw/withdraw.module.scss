@@ -2,14 +2,16 @@
 
 .withdraw {
   display: flex;
+  flex-direction: column;
   margin: 1em 0;
   padding: 1rem;
-  border: 1px solid red;
-  width: 50%;
 
   // @include neumorphism;
 
   .error {
-    color: red;
+    color: white;
+    background-color: #ed5755;
+    border-radius: 1rem;
+    padding: 1rem;
   }
 }

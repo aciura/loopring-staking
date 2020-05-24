@@ -1,12 +1,18 @@
 @import '../../styles/mix';
 
 .staking {
-  border: 1px solid yellow;
-  background-color: lightblue;
-
   @include neumorphism;
 }
 
+.message {
+  color: white;
+  background-color: #1caf01;
+  font-weight: bold;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
 .error {
-  color: red;
+  color: white;
+  background-color: #ed5755;
 }

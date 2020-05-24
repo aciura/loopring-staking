@@ -2,6 +2,7 @@ import React from 'react'
 import Web3 from 'web3'
 import InputSlider from '../InputSlider/InputSlider'
 import { convertLrcToWei, displayWei } from '../utils'
+import styles from './ChangeAmount.module.scss'
 
 export default function ChangeAmount({
   text,
@@ -18,16 +19,7 @@ export default function ChangeAmount({
     updateAmount(amount, false)
   }, [amount])
 
-  // console.log('ChangeAmount', {
-  //   text,
-  //   max: max?.toString(),
-  //   amount: amount?.toString(),
-  //   newAmount: newAmount?.toString(),
-  //   hasChanged,
-  // })
-
   const updateAmount = (newValue, hasChanged = true) => {
-    // console.log('updateAmount', newValue)
     if (newValue >= 0) {
       setNewAmount(newValue)
       inputRef.current.value = displayWei(newValue)
@@ -36,14 +28,12 @@ export default function ChangeAmount({
   }
 
   const handleBlur = (newLrcValue) => {
-    // console.log('allowanceInputChange', { newLrcValue })
     if (+newLrcValue >= 0) {
       updateAmount(convertLrcToWei(newLrcValue))
     }
   }
 
   const sliderChange = (sliderValue) => {
-    // console.log('sliderChange', { max: max?.toString(), sliderValue })
     let amountBN = new Web3.utils.BN(max)
     amountBN = amountBN.muln(+sliderValue)
     amountBN = amountBN.divn(100)
@@ -59,7 +49,7 @@ export default function ChangeAmount({
   const isDisabled = max <= 0
 
   return (
-    <>
+    <div className={styles.changeAmount}>
       <label>{text}</label>&nbsp;
       <input
         type="text"
@@ -71,17 +61,19 @@ export default function ChangeAmount({
         disabled={isDisabled}
       />{' '}
       {tokenSymbol}
-      <input
-        type="submit"
+      <button
         value="Approve"
         onClick={submit}
         disabled={isDisabled || !hasChanged}
-      />
+        className={styles.submit}
+      >
+        Approve
+      </button>
       <InputSlider
         onChange={sliderChange}
         initialPercent={(newAmount / max) * 100}
         disabled={isDisabled}
       />
-    </>
+    </div>
   )
 }

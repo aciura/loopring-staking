@@ -4,6 +4,7 @@
 .App {
   text-align: center;
   background: #7d8491;
+  color: #062d4f;
 
   .container {
     display: flex;
@@ -57,7 +58,47 @@
   }
 }
 
+:global(button) {
+  color: #d7dedc;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  background: #7d8491;
+  box-shadow: 5px 5px 10px #6a707b, -5px -5px 10px #9098a7;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  transition: all 0.5s;
+
+  &:hover {
+    border-radius: 10px;
+    background: linear-gradient(145deg, #868d9b, #717783);
+    box-shadow: 5px 5px 10px #6a707b, -5px -5px 10px #9098a7;
+  }
+  &:active {
+    border-radius: 10px;
+    background: linear-gradient(145deg, #717783, #868d9b);
+    box-shadow: 5px 5px 10px #6a707b, -5px -5px 10px #9098a7;
+  }
+  &:disabled {
+    color: rgba(200, 200, 200, 0.3);
+    border-radius: 10px;
+    background: #7d8491;
+    box-shadow: inset 7px 7px 10px #79808d, inset -7px -7px 10px #818895;
+  }
+}
+
+:global(input) {
+  outline: none;
+}
+
+:global(select),
+:global(option) {
+  outline: none;
+}
+
 .testBtn {
+  padding: 1rem;
   background-color: transparent;
-  border: 2px solid grey;
+  border: none;
 }

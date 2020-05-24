@@ -1,8 +1,15 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
-import { TokenAmount, convertLrcToWei, getWaitTimeInDays } from '../utils'
+import {
+  TokenAmount,
+  convertLrcToWei,
+  getWaitTimeInDays,
+  getClaimingDate,
+  displayWei,
+} from '../utils'
 
 import styles from './withdraw.module.scss'
+import ChangeAmount from '../ChangeAmount/ChangeAmount'
 
 export function Withdraw({
   address,
@@ -10,43 +17,50 @@ export function Withdraw({
   refreshAccountInfo = (_) => {},
 }) {
   const [error, setError] = React.useState()
-  const [amount, setAmount] = React.useState()
+  const [amount, setAmount] = React.useState(0)
   const { balance, withdrawalWaitTime } = stakingData ?? {
     balance: 0,
     withdrawalWaitTime: 0,
   }
 
-  const withdraw = () => {
+  const withdraw = (amount) => {
     if (amount > 0) {
       const amountInWei = convertLrcToWei(amount)
       LrcService.withdraw(address, amountInWei)
         .then(() => {
+          setAmount(0)
           refreshAccountInfo()
+          setError(null)
         })
         .catch((error) => {
           console.error(error)
-          setError(`Withdraw of ${amount} has failed`)
+          setError(`Withdraw of ${displayWei(amount)} has failed`)
         })
     } else setError('Amount has to be larger then zero')
   }
 
-  const updateAmount = (e) => {
-    const newValue = +e.target.value
-
-    if (newValue >= 0) {
-      setAmount(newValue)
-    }
-  }
+  const canWithdraw = withdrawalWaitTime <= 0
 
   return (
     <div className={styles.withdraw}>
       <div>
         Withdrawal Wait Time:&nbsp;
         {getWaitTimeInDays(withdrawalWaitTime)}
+        &nbsp; ({getClaimingDate(withdrawalWaitTime)})
       </div>
-      Withdraw Staked amount: <TokenAmount amountInWei={balance} symbol="LRC" />
-      <input type="number" value={amount} onChange={updateAmount} />
-      <button onClick={withdraw}>Withdraw</button>
+
+      <div>
+        Withdraw Staked amount:{' '}
+        <TokenAmount amountInWei={balance} symbol="LRC" />
+      </div>
+
+      <ChangeAmount
+        text={'Withdraw amount:'}
+        max={canWithdraw ? balance : 0}
+        amount={amount}
+        submitAmountChange={withdraw}
+      />
+
       {error && <div className={styles.error}>{error?.toString()}</div>}
     </div>
   )
