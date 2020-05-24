@@ -1,40 +1,16 @@
 import React from 'react'
 import { Account } from './components/Account/Account'
 import {
-  getEthAccounts,
   loopringContract,
   userStakingPoolContract,
   protocolFeeVaultContract,
   initWeb3,
   initTruffle,
 } from './services/Ethereum'
-import styles from './App.module.scss'
 import { LinkToEtherscan } from './components/utils'
+import { Connect } from './Connect'
 
-function Connect({ onConnected, setAccounts }) {
-  const connect = (e) => {
-    e.preventDefault()
-    initWeb3().then((web3) => {
-      onConnected()
-      getEthAccounts()
-        .then((_accounts) => {
-          setAccounts(_accounts)
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    })
-  }
-
-  return (
-    <div className={styles.connectContainer}>
-      <h4>Loopring Staking</h4>
-      <button className={styles.connectButton} onClick={connect}>
-        Connect
-      </button>
-    </div>
-  )
-}
+import styles from './App.module.scss'
 
 function App() {
   const [accounts, setAccounts] = React.useState([])
