@@ -25,11 +25,11 @@ export function StakingComponent({
   const maxStakeAmount = weiMin(allowance, balance)
   const [newStakeAmount, setNewStakeAmount] = React.useState(0)
 
-  console.log('StakingComponent', {
-    allowance,
-    balance,
-    maxStakeAmount,
-    stakingData,
+  console.log('StakingComponent render', {
+    allowance: allowance?.toString(),
+    balance: balance?.toString(),
+    maxStakeAmount: maxStakeAmount?.toString(),
+    stakingData: stakingData?.toString(),
   })
 
   const refreshAddressStaking = (address) => {
@@ -57,7 +57,6 @@ export function StakingComponent({
   }
 
   React.useEffect(() => {
-    console.log('StakingComponent useEffect')
     refreshAddressStaking(address)
   }, [address])
 

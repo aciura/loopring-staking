@@ -12,30 +12,40 @@ export default function ChangeAmount({
 }) {
   const inputRef = React.useRef(null)
   const [hasChanged, setHasChanged] = React.useState(false)
-  const [newAmount, setNewAmount] = React.useState(amount)
+  const [newAmount, setNewAmount] = React.useState(0)
 
-  const updateAmount = (newValue) => {
-    console.log('updateAmount', newValue)
+  React.useEffect(() => {
+    updateAmount(amount, false)
+  }, [amount])
 
+  // console.log('ChangeAmount', {
+  //   text,
+  //   max: max?.toString(),
+  //   amount: amount?.toString(),
+  //   newAmount: newAmount?.toString(),
+  //   hasChanged,
+  // })
+
+  const updateAmount = (newValue, hasChanged = true) => {
+    // console.log('updateAmount', newValue)
     if (newValue >= 0) {
       setNewAmount(newValue)
       inputRef.current.value = displayWei(newValue)
-      setHasChanged(true)
+      if (hasChanged) setHasChanged(true)
     }
   }
 
   const handleBlur = (newLrcValue) => {
-    console.log('allowanceInputChange', { newLrcValue })
+    // console.log('allowanceInputChange', { newLrcValue })
     if (+newLrcValue >= 0) {
       updateAmount(convertLrcToWei(newLrcValue))
     }
   }
 
   const sliderChange = (sliderValue) => {
-    console.log('sliderChange', { max, sliderValue })
+    // console.log('sliderChange', { max: max?.toString(), sliderValue })
     let amountBN = new Web3.utils.BN(max)
     amountBN = amountBN.muln(+sliderValue)
-    console.log(amountBN.toString())
     amountBN = amountBN.divn(100)
 
     updateAmount(amountBN)
@@ -46,9 +56,11 @@ export default function ChangeAmount({
     updateAmount(0)
   }
 
+  const isDisabled = max <= 0
+
   return (
     <>
-      <label>{text}</label>
+      <label>{text}</label>&nbsp;
       <input
         type="text"
         ref={inputRef}
@@ -56,17 +68,19 @@ export default function ChangeAmount({
           setHasChanged(true)
         }}
         onBlur={(e) => handleBlur(e.target.value)}
+        disabled={isDisabled}
       />{' '}
       {tokenSymbol}
       <input
         type="submit"
         value="Approve"
-        disabled={!hasChanged}
         onClick={submit}
+        disabled={isDisabled || !hasChanged}
       />
       <InputSlider
         onChange={sliderChange}
         initialPercent={(newAmount / max) * 100}
+        disabled={isDisabled}
       />
     </>
   )

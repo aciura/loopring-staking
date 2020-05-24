@@ -1,17 +1,11 @@
 import React from 'react'
 import styles from './InputSlider.module.scss'
 
-function InputSlider({ onChange, initialPercent = 0 }) {
+function InputSlider({ onChange, initialPercent = 0, disabled = false }) {
   const init = Math.min(100, Math.ceil(initialPercent))
   const [rangePercent, setRangePercent] = React.useState(0)
-  // console.info('InputSlider', { init, rangePercent })
 
   React.useEffect(() => {
-    console.log('InputSlider init changed', {
-      initialPercent,
-      init,
-      rangePercent,
-    })
     setRangePercent(init)
   }, [init])
 
@@ -21,12 +15,13 @@ function InputSlider({ onChange, initialPercent = 0 }) {
   }
 
   return (
-    <div className={styles.InputSlider}>
+    <div className={styles.InputSlider} disabled={disabled}>
       <input
         type="range"
         value={rangePercent}
         onChange={handleChange}
         style={{ filter: `hue-rotate(-${rangePercent}deg)` }}
+        disabled={disabled}
       />
       <div className={styles.h4Container}>
         <div className={styles.h4Subcontainer}>

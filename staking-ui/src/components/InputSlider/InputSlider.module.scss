@@ -24,6 +24,9 @@
         height: 40px;
         -webkit-appearance: none;
         background-color: #ddd;
+        &:disabled {
+          background-color: grey;
+        }
       }
       &::-webkit-slider-runnable-track {
         height: 40px;
@@ -47,6 +50,10 @@
       &:active::-webkit-slider-thumb {
         background: #fff;
         box-shadow: -340px 0 0 320px #1597ff, inset 0 0 0 3px #1597ff;
+      }
+      &:disabled::-webkit-slider-thumb {
+        background: grey;
+        box-shadow: -340px 0 0 320px grey, inset 0 0 0 3px grey;
       }
     }
   }

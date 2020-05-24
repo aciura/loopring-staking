@@ -63,6 +63,15 @@ export function getWaitTimeInDays(waitTimeInSec) {
   return `${days} days, ${hours}h, ${mins}min`
 }
 
+export function getClaimingDate(waitTimeInSec) {
+  if (waitTimeInSec >= 0) {
+    const now = Date.now()
+    const newDate = new Date(now + waitTimeInSec * 1000 /*ms*/)
+    return newDate.toLocaleDateString()
+  }
+  return null
+}
+
 export function LinkToEtherscan({ label, address, children }) {
   function getUrl(address) {
     return `https://etherscan.io/address/${address}`
