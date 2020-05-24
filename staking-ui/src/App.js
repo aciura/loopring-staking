@@ -7,7 +7,7 @@ import {
   initWeb3,
   initTruffle,
 } from './services/Ethereum'
-import { LinkToEtherscan } from './components/utils'
+import { LinkToEtherscan } from './components/LinkToEtherscan'
 import { Connect } from './Connect'
 
 import styles from './App.module.scss'

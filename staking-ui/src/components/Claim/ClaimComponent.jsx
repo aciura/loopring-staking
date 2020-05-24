@@ -1,6 +1,7 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
-import { TokenAmount, getWaitTimeInDays, getClaimingDate } from '../utils'
+import { getWaitTimeInDays, getClaimingDate } from '../utils'
+import { TokenAmount } from '../TokenAmount'
 import styles from './ClaimComponent.module.scss'
 
 export function ClaimComponent({
@@ -42,12 +43,12 @@ export function ClaimComponent({
   const canClaimReward = rewardWaitTime <= 0
   return (
     <div className={styles.claim}>
-      All users staking sum:{' '}
+      All users staked tokens:{' '}
       <TokenAmount amountInWei={totalStaking} symbol="LRC" />
       <br />
       Total fee prize: <TokenAmount amountInWei={totalPrize} symbol="LRC" />
       <br />
-      Your pending Reward:&nbsp;
+      Your pending reward:&nbsp;
       <TokenAmount amountInWei={pendingReward} symbol="LRC" />
       <div>
         Wait time before claiming reward: &nbsp;
@@ -55,7 +56,7 @@ export function ClaimComponent({
         {rewardWaitTime && <span>({getClaimingDate(rewardWaitTime)})</span>}
       </div>
       <button onClick={claimReward} disabled={!canClaimReward}>
-        Claim Reward
+        Claim reward
       </button>
       {error && <div className={styles.error}>Claim reward has failed</div>}
     </div>

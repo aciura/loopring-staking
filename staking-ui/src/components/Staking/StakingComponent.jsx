@@ -2,7 +2,8 @@ import React from 'react'
 import LrcService from '../../services/LrcService'
 import { ClaimComponent } from '../Claim/ClaimComponent'
 import { Withdraw } from '../Withdraw/Withdraw'
-import { TokenAmount, weiMin, displayWei } from '../utils'
+import { weiMin, displayWei } from '../utils'
+import { TokenAmount } from '../TokenAmount'
 import ChangeAmount from '../ChangeAmount/ChangeAmount'
 
 import styles from './staking.module.scss'
@@ -57,8 +58,9 @@ export function StakingComponent({
   return (
     <div className={styles.staking}>
       <h4>Staking</h4>
+      <div>Staking locks up your token for 90 days.</div>
       <div>
-        Staked balance:{' '}
+        Already staked:{' '}
         <TokenAmount amountInWei={stakingData?.balance} symbol="LRC" />{' '}
       </div>
       <div>

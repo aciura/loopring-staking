@@ -1,4 +1,3 @@
-import React from 'react'
 import Web3 from 'web3'
 
 const BN = Web3.utils.BN
@@ -42,19 +41,6 @@ export function displayWei(amountInWei) {
   throw Error('displayWei error for:' + amountInWei)
 }
 
-export function TokenAmount({ amountInWei, symbol = 'LRC' }) {
-  const stringWithDot = displayWei(amountInWei)
-  const [integerPart, fractionalPart] = stringWithDot?.split('.') ?? [0, 0]
-  return (
-    <>
-      <span>{integerPart}</span>
-      <span style={{ fontSize: '2rem' }}>.</span>
-      <span style={{ fontSize: '0.75rem' }}>{fractionalPart ?? 0}</span>
-      <span style={{ paddingLeft: '0.5em' }}>{symbol}</span>
-    </>
-  )
-}
-
 export function getWaitTimeInDays(waitTimeInSec) {
   const waitTimeInHours = waitTimeInSec / 60 / 60
   const days = Math.floor(waitTimeInHours / 24).toFixed(0)
@@ -70,17 +56,4 @@ export function getClaimingDate(waitTimeInSec) {
     return newDate.toLocaleDateString()
   }
   return null
-}
-
-export function LinkToEtherscan({ label, address, children }) {
-  function getUrl(address) {
-    return `https://etherscan.io/address/${address}`
-  }
-  return (
-    <div>
-      {label}&nbsp;
-      <a href={getUrl(address)}>{address}</a>
-      {children}
-    </div>
-  )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import LrcService from '../../services/LrcService'
 import ChangeAmount from '../ChangeAmount/ChangeAmount'
 import { StakingComponent } from '../Staking/StakingComponent'
-import { TokenAmount } from '../utils'
+import { TokenAmount } from '../TokenAmount'
 
 import styles from './Account.module.scss'
 

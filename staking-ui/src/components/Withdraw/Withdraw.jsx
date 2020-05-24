@@ -1,15 +1,15 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
 import {
-  TokenAmount,
   convertLrcToWei,
   getWaitTimeInDays,
   getClaimingDate,
   displayWei,
 } from '../utils'
+import { TokenAmount } from '../TokenAmount'
+import ChangeAmount from '../ChangeAmount/ChangeAmount'
 
 import styles from './withdraw.module.scss'
-import ChangeAmount from '../ChangeAmount/ChangeAmount'
 
 export function Withdraw({
   address,
@@ -44,13 +44,13 @@ export function Withdraw({
   return (
     <div className={styles.withdraw}>
       <div>
-        Withdrawal Wait Time:&nbsp;
+        Withdrawal wait time:&nbsp;
         {getWaitTimeInDays(withdrawalWaitTime)}
         &nbsp; ({getClaimingDate(withdrawalWaitTime)})
       </div>
 
       <div>
-        Withdraw Staked amount:{' '}
+        Withdraw staked amount:{' '}
         <TokenAmount amountInWei={balance} symbol="LRC" />
       </div>
 
