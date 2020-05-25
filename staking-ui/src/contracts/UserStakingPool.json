@@ -418,45 +418,22 @@
   "ast": {
     "absolutePath": "/C/Users/aciur/Documents/Projects/ethereum/loopring-staking/eth/contracts/LRC_UserStakingPool.sol",
     "exportedSymbols": {
-      "Claimable": [
-        1284
-      ],
-      "ERC20": [
-        1335
-      ],
-      "ERC20SafeTransfer": [
-        1564
-      ],
-      "IProtocolFeeVault": [
-        1783
-      ],
-      "IUserStakingPool": [
-        1856
-      ],
-      "MathUint": [
-        1677
-      ],
-      "Ownable": [
-        1221
-      ],
-      "ReentrancyGuard": [
-        1699
-      ],
-      "UserStakingPool": [
-        2517
-      ]
+      "Claimable": [1284],
+      "ERC20": [1335],
+      "ERC20SafeTransfer": [1564],
+      "IProtocolFeeVault": [1783],
+      "IUserStakingPool": [1856],
+      "MathUint": [1677],
+      "Ownable": [1221],
+      "ReentrancyGuard": [1699],
+      "UserStakingPool": [2517]
     },
     "id": 2518,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 1146,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.5", ".11"],
         "nodeType": "PragmaDirective",
         "src": "132:24:1"
       },
@@ -467,9 +444,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1221,
-        "linearizedBaseContracts": [
-          1221
-        ],
+        "linearizedBaseContracts": [1221],
         "name": "Ownable",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -770,10 +745,7 @@
                       "id": 1165,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "428:7:1",
                       "typeDescriptions": {
@@ -950,10 +922,7 @@
                       "id": 1182,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "573:7:1",
                       "typeDescriptions": {
@@ -1452,17 +1421,12 @@
             "src": "883:7:1"
           }
         ],
-        "contractDependencies": [
-          1221
-        ],
+        "contractDependencies": [1221],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 1284,
-        "linearizedBaseContracts": [
-          1284,
-          1221
-        ],
+        "linearizedBaseContracts": [1284, 1221],
         "name": "Claimable",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -1597,10 +1561,7 @@
                       "id": 1227,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "973:7:1",
                       "typeDescriptions": {
@@ -1841,10 +1802,7 @@
                       "id": 1244,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "1125:7:1",
                       "typeDescriptions": {
@@ -2261,9 +2219,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 1335,
-        "linearizedBaseContracts": [
-          1335
-        ],
+        "linearizedBaseContracts": [1335],
         "name": "ERC20",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -2874,9 +2830,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1564,
-        "linearizedBaseContracts": [
-          1564
-        ],
+        "linearizedBaseContracts": [1564],
         "name": "ERC20SafeTransfer",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -3523,10 +3477,7 @@
                       "id": 1384,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "2550:7:1",
                       "typeDescriptions": {
@@ -3693,9 +3644,7 @@
               "src": "2845:253:1",
               "statements": [
                 {
-                  "assignments": [
-                    1409
-                  ],
+                  "assignments": [1409],
                   "declarations": [
                     {
                       "constant": false,
@@ -3871,10 +3820,7 @@
                   "src": "2856:127:1"
                 },
                 {
-                  "assignments": [
-                    1420,
-                    null
-                  ],
+                  "assignments": [1420, null],
                   "declarations": [
                     {
                       "constant": false,
@@ -4836,9 +4782,7 @@
               "src": "3852:217:1",
               "statements": [
                 {
-                  "assignments": [
-                    1492
-                  ],
+                  "assignments": [1492],
                   "declarations": [
                     {
                       "constant": false,
@@ -5038,10 +4982,7 @@
                       "id": 1501,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "4026:7:1",
                       "typeDescriptions": {
@@ -5235,9 +5176,7 @@
               "src": "4265:272:1",
               "statements": [
                 {
-                  "assignments": [
-                    1523
-                  ],
+                  "assignments": [1523],
                   "declarations": [
                     {
                       "constant": false,
@@ -5430,10 +5369,7 @@
                   "src": "4276:146:1"
                 },
                 {
-                  "assignments": [
-                    1535,
-                    null
-                  ],
+                  "assignments": [1535, null],
                   "declarations": [
                     {
                       "constant": false,
@@ -6005,9 +5941,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1677,
-        "linearizedBaseContracts": [
-          1677
-        ],
+        "linearizedBaseContracts": [1677],
         "name": "MathUint",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -6278,10 +6212,7 @@
                       "id": 1579,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5223:7:1",
                       "typeDescriptions": {
@@ -6502,10 +6433,7 @@
                       "id": 1602,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5362:7:1",
                       "typeDescriptions": {
@@ -6855,10 +6783,7 @@
                       "id": 1629,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5533:7:1",
                       "typeDescriptions": {
@@ -6998,9 +6923,7 @@
               "src": "5650:203:1",
               "statements": [
                 {
-                  "assignments": [
-                    1645
-                  ],
+                  "assignments": [1645],
                   "declarations": [
                     {
                       "constant": false,
@@ -7052,9 +6975,7 @@
                   "src": "5661:28:1"
                 },
                 {
-                  "assignments": [
-                    1649
-                  ],
+                  "assignments": [1649],
                   "declarations": [
                     {
                       "constant": false,
@@ -7133,9 +7054,7 @@
                   "src": "5700:39:1"
                 },
                 {
-                  "assignments": [
-                    1655
-                  ],
+                  "assignments": [1655],
                   "declarations": [
                     {
                       "constant": false,
@@ -7545,9 +7464,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1699,
-        "linearizedBaseContracts": [
-          1699
-        ],
+        "linearizedBaseContracts": [1699],
         "name": "ReentrancyGuard",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -7670,10 +7587,7 @@
                       "id": 1681,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5963:7:1",
                       "typeDescriptions": {
@@ -7832,9 +7746,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 1783,
-        "linearizedBaseContracts": [
-          1783
-        ],
+        "linearizedBaseContracts": [1783],
         "name": "IProtocolFeeVault",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -8851,9 +8763,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 1856,
-        "linearizedBaseContracts": [
-          1856
-        ],
+        "linearizedBaseContracts": [1856],
         "name": "IUserStakingPool",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -9768,23 +9678,12 @@
             "src": "8518:16:1"
           }
         ],
-        "contractDependencies": [
-          1221,
-          1284,
-          1699,
-          1856
-        ],
+        "contractDependencies": [1221, 1284, 1699, 1856],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 2517,
-        "linearizedBaseContracts": [
-          2517,
-          1856,
-          1699,
-          1284,
-          1221
-        ],
+        "linearizedBaseContracts": [2517, 1856, 1699, 1284, 1221],
         "name": "UserStakingPool",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -10138,10 +10037,7 @@
                       "id": 1888,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "8874:7:1",
                       "typeDescriptions": {
@@ -11196,10 +11092,7 @@
                       "id": 1976,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "9892:7:1",
                       "typeDescriptions": {
@@ -11384,9 +11277,7 @@
                   "src": "9938:71:1"
                 },
                 {
-                  "assignments": [
-                    1995
-                  ],
+                  "assignments": [1995],
                   "declarations": [
                     {
                       "constant": false,
@@ -11608,9 +11499,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    2012
-                  ],
+                  "assignments": [2012],
                   "declarations": [
                     {
                       "constant": false,
@@ -13228,10 +13117,7 @@
                       "id": 2116,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "10830:7:1",
                       "typeDescriptions": {
@@ -13515,9 +13401,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    2144
-                  ],
+                  "assignments": [2144],
                   "declarations": [
                     {
                       "constant": false,
@@ -13609,9 +13493,7 @@
                   "src": "11083:43:1"
                 },
                 {
-                  "assignments": [
-                    2151
-                  ],
+                  "assignments": [2151],
                   "declarations": [
                     {
                       "constant": false,
@@ -13934,10 +13816,7 @@
                       "id": 2166,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "11256:7:1",
                       "typeDescriptions": {
@@ -14941,10 +14820,7 @@
                       "id": 2240,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "11844:7:1",
                       "typeDescriptions": {
@@ -15109,10 +14985,7 @@
                       "id": 2249,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "11917:7:1",
                       "typeDescriptions": {
@@ -15139,9 +15012,7 @@
                   "src": "11917:62:1"
                 },
                 {
-                  "assignments": [
-                    2260
-                  ],
+                  "assignments": [2260],
                   "declarations": [
                     {
                       "constant": false,
@@ -15176,9 +15047,7 @@
                   "src": "11992:19:1"
                 },
                 {
-                  "assignments": [
-                    2263
-                  ],
+                  "assignments": [2263],
                   "declarations": [
                     {
                       "constant": false,
@@ -15902,9 +15771,7 @@
                         "src": "12393:110:1"
                       },
                       {
-                        "assignments": [
-                          2313
-                        ],
+                        "assignments": [2313],
                         "declarations": [
                           {
                             "constant": false,
@@ -16376,9 +16243,7 @@
               "src": "12860:286:1",
               "statements": [
                 {
-                  "assignments": [
-                    2354
-                  ],
+                  "assignments": [2354],
                   "declarations": [
                     {
                       "constant": false,
@@ -16524,9 +16389,7 @@
                     "src": "13010:129:1",
                     "statements": [
                       {
-                        "assignments": [
-                          2367
-                        ],
+                        "assignments": [2367],
                         "declarations": [
                           {
                             "constant": false,
@@ -16890,9 +16753,7 @@
               "src": "13229:287:1",
               "statements": [
                 {
-                  "assignments": [
-                    2394
-                  ],
+                  "assignments": [2394],
                   "declarations": [
                     {
                       "constant": false,
@@ -17038,9 +16899,7 @@
                     "src": "13370:139:1",
                     "statements": [
                       {
-                        "assignments": [
-                          2407
-                        ],
+                        "assignments": [2407],
                         "declarations": [
                           {
                             "constant": false,
@@ -17447,9 +17306,7 @@
               "src": "13686:691:1",
               "statements": [
                 {
-                  "assignments": [
-                    2441
-                  ],
+                  "assignments": [2441],
                   "declarations": [
                     {
                       "constant": false,
@@ -18701,45 +18558,22 @@
   "legacyAST": {
     "absolutePath": "/C/Users/aciur/Documents/Projects/ethereum/loopring-staking/eth/contracts/LRC_UserStakingPool.sol",
     "exportedSymbols": {
-      "Claimable": [
-        1284
-      ],
-      "ERC20": [
-        1335
-      ],
-      "ERC20SafeTransfer": [
-        1564
-      ],
-      "IProtocolFeeVault": [
-        1783
-      ],
-      "IUserStakingPool": [
-        1856
-      ],
-      "MathUint": [
-        1677
-      ],
-      "Ownable": [
-        1221
-      ],
-      "ReentrancyGuard": [
-        1699
-      ],
-      "UserStakingPool": [
-        2517
-      ]
+      "Claimable": [1284],
+      "ERC20": [1335],
+      "ERC20SafeTransfer": [1564],
+      "IProtocolFeeVault": [1783],
+      "IUserStakingPool": [1856],
+      "MathUint": [1677],
+      "Ownable": [1221],
+      "ReentrancyGuard": [1699],
+      "UserStakingPool": [2517]
     },
     "id": 2518,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 1146,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.5", ".11"],
         "nodeType": "PragmaDirective",
         "src": "132:24:1"
       },
@@ -18750,9 +18584,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1221,
-        "linearizedBaseContracts": [
-          1221
-        ],
+        "linearizedBaseContracts": [1221],
         "name": "Ownable",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -19053,10 +18885,7 @@
                       "id": 1165,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "428:7:1",
                       "typeDescriptions": {
@@ -19233,10 +19062,7 @@
                       "id": 1182,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "573:7:1",
                       "typeDescriptions": {
@@ -19735,17 +19561,12 @@
             "src": "883:7:1"
           }
         ],
-        "contractDependencies": [
-          1221
-        ],
+        "contractDependencies": [1221],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 1284,
-        "linearizedBaseContracts": [
-          1284,
-          1221
-        ],
+        "linearizedBaseContracts": [1284, 1221],
         "name": "Claimable",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -19880,10 +19701,7 @@
                       "id": 1227,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "973:7:1",
                       "typeDescriptions": {
@@ -20124,10 +19942,7 @@
                       "id": 1244,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "1125:7:1",
                       "typeDescriptions": {
@@ -20544,9 +20359,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 1335,
-        "linearizedBaseContracts": [
-          1335
-        ],
+        "linearizedBaseContracts": [1335],
         "name": "ERC20",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -21157,9 +20970,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1564,
-        "linearizedBaseContracts": [
-          1564
-        ],
+        "linearizedBaseContracts": [1564],
         "name": "ERC20SafeTransfer",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -21806,10 +21617,7 @@
                       "id": 1384,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "2550:7:1",
                       "typeDescriptions": {
@@ -21976,9 +21784,7 @@
               "src": "2845:253:1",
               "statements": [
                 {
-                  "assignments": [
-                    1409
-                  ],
+                  "assignments": [1409],
                   "declarations": [
                     {
                       "constant": false,
@@ -22154,10 +21960,7 @@
                   "src": "2856:127:1"
                 },
                 {
-                  "assignments": [
-                    1420,
-                    null
-                  ],
+                  "assignments": [1420, null],
                   "declarations": [
                     {
                       "constant": false,
@@ -23119,9 +22922,7 @@
               "src": "3852:217:1",
               "statements": [
                 {
-                  "assignments": [
-                    1492
-                  ],
+                  "assignments": [1492],
                   "declarations": [
                     {
                       "constant": false,
@@ -23321,10 +23122,7 @@
                       "id": 1501,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "4026:7:1",
                       "typeDescriptions": {
@@ -23518,9 +23316,7 @@
               "src": "4265:272:1",
               "statements": [
                 {
-                  "assignments": [
-                    1523
-                  ],
+                  "assignments": [1523],
                   "declarations": [
                     {
                       "constant": false,
@@ -23713,10 +23509,7 @@
                   "src": "4276:146:1"
                 },
                 {
-                  "assignments": [
-                    1535,
-                    null
-                  ],
+                  "assignments": [1535, null],
                   "declarations": [
                     {
                       "constant": false,
@@ -24288,9 +24081,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1677,
-        "linearizedBaseContracts": [
-          1677
-        ],
+        "linearizedBaseContracts": [1677],
         "name": "MathUint",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -24561,10 +24352,7 @@
                       "id": 1579,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5223:7:1",
                       "typeDescriptions": {
@@ -24785,10 +24573,7 @@
                       "id": 1602,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5362:7:1",
                       "typeDescriptions": {
@@ -25138,10 +24923,7 @@
                       "id": 1629,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5533:7:1",
                       "typeDescriptions": {
@@ -25281,9 +25063,7 @@
               "src": "5650:203:1",
               "statements": [
                 {
-                  "assignments": [
-                    1645
-                  ],
+                  "assignments": [1645],
                   "declarations": [
                     {
                       "constant": false,
@@ -25335,9 +25115,7 @@
                   "src": "5661:28:1"
                 },
                 {
-                  "assignments": [
-                    1649
-                  ],
+                  "assignments": [1649],
                   "declarations": [
                     {
                       "constant": false,
@@ -25416,9 +25194,7 @@
                   "src": "5700:39:1"
                 },
                 {
-                  "assignments": [
-                    1655
-                  ],
+                  "assignments": [1655],
                   "declarations": [
                     {
                       "constant": false,
@@ -25828,9 +25604,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 1699,
-        "linearizedBaseContracts": [
-          1699
-        ],
+        "linearizedBaseContracts": [1699],
         "name": "ReentrancyGuard",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -25953,10 +25727,7 @@
                       "id": 1681,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "5963:7:1",
                       "typeDescriptions": {
@@ -26115,9 +25886,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 1783,
-        "linearizedBaseContracts": [
-          1783
-        ],
+        "linearizedBaseContracts": [1783],
         "name": "IProtocolFeeVault",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -27134,9 +26903,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 1856,
-        "linearizedBaseContracts": [
-          1856
-        ],
+        "linearizedBaseContracts": [1856],
         "name": "IUserStakingPool",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -28051,23 +27818,12 @@
             "src": "8518:16:1"
           }
         ],
-        "contractDependencies": [
-          1221,
-          1284,
-          1699,
-          1856
-        ],
+        "contractDependencies": [1221, 1284, 1699, 1856],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 2517,
-        "linearizedBaseContracts": [
-          2517,
-          1856,
-          1699,
-          1284,
-          1221
-        ],
+        "linearizedBaseContracts": [2517, 1856, 1699, 1284, 1221],
         "name": "UserStakingPool",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -28421,10 +28177,7 @@
                       "id": 1888,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "8874:7:1",
                       "typeDescriptions": {
@@ -29479,10 +29232,7 @@
                       "id": 1976,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "9892:7:1",
                       "typeDescriptions": {
@@ -29667,9 +29417,7 @@
                   "src": "9938:71:1"
                 },
                 {
-                  "assignments": [
-                    1995
-                  ],
+                  "assignments": [1995],
                   "declarations": [
                     {
                       "constant": false,
@@ -29891,9 +29639,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    2012
-                  ],
+                  "assignments": [2012],
                   "declarations": [
                     {
                       "constant": false,
@@ -31511,10 +31257,7 @@
                       "id": 2116,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "10830:7:1",
                       "typeDescriptions": {
@@ -31798,9 +31541,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    2144
-                  ],
+                  "assignments": [2144],
                   "declarations": [
                     {
                       "constant": false,
@@ -31892,9 +31633,7 @@
                   "src": "11083:43:1"
                 },
                 {
-                  "assignments": [
-                    2151
-                  ],
+                  "assignments": [2151],
                   "declarations": [
                     {
                       "constant": false,
@@ -32217,10 +31956,7 @@
                       "id": 2166,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "11256:7:1",
                       "typeDescriptions": {
@@ -33224,10 +32960,7 @@
                       "id": 2240,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "11844:7:1",
                       "typeDescriptions": {
@@ -33392,10 +33125,7 @@
                       "id": 2249,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        3348,
-                        3349
-                      ],
+                      "overloadedDeclarations": [3348, 3349],
                       "referencedDeclaration": 3349,
                       "src": "11917:7:1",
                       "typeDescriptions": {
@@ -33422,9 +33152,7 @@
                   "src": "11917:62:1"
                 },
                 {
-                  "assignments": [
-                    2260
-                  ],
+                  "assignments": [2260],
                   "declarations": [
                     {
                       "constant": false,
@@ -33459,9 +33187,7 @@
                   "src": "11992:19:1"
                 },
                 {
-                  "assignments": [
-                    2263
-                  ],
+                  "assignments": [2263],
                   "declarations": [
                     {
                       "constant": false,
@@ -34185,9 +33911,7 @@
                         "src": "12393:110:1"
                       },
                       {
-                        "assignments": [
-                          2313
-                        ],
+                        "assignments": [2313],
                         "declarations": [
                           {
                             "constant": false,
@@ -34659,9 +34383,7 @@
               "src": "12860:286:1",
               "statements": [
                 {
-                  "assignments": [
-                    2354
-                  ],
+                  "assignments": [2354],
                   "declarations": [
                     {
                       "constant": false,
@@ -34807,9 +34529,7 @@
                     "src": "13010:129:1",
                     "statements": [
                       {
-                        "assignments": [
-                          2367
-                        ],
+                        "assignments": [2367],
                         "declarations": [
                           {
                             "constant": false,
@@ -35173,9 +34893,7 @@
               "src": "13229:287:1",
               "statements": [
                 {
-                  "assignments": [
-                    2394
-                  ],
+                  "assignments": [2394],
                   "declarations": [
                     {
                       "constant": false,
@@ -35321,9 +35039,7 @@
                     "src": "13370:139:1",
                     "statements": [
                       {
-                        "assignments": [
-                          2407
-                        ],
+                        "assignments": [2407],
                         "declarations": [
                           {
                             "constant": false,
@@ -35730,9 +35446,7 @@
               "src": "13686:691:1",
               "statements": [
                 {
-                  "assignments": [
-                    2441
-                  ],
+                  "assignments": [2441],
                   "declarations": [
                     {
                       "constant": false,
@@ -36986,6 +36700,9 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {
+    "prod": {
+      "address": "0xF4662bB1C4831fD411a95b8050B3A5998d8A4A5b"
+    },
     "5777": {
       "events": {
         "0xfaa4a7e6a2ecb2217533f3081ad082d42261efe260c8842dd32a5ebb72011b78": {

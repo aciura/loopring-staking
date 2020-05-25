@@ -34,13 +34,13 @@ export const initTruffle = async () => {
   web3 = new Web3(localNode)
 }
 
-const lrcNetworkDeploymentKey = Object.keys(LrcContract.networks)[0]
+const lrcNetworkDeploymentKey = 'prod'
 export let loopringContract = null
 
-const uspNetworkDeploymentKey = Object.keys(UserStakingPool.networks)[0]
+const uspNetworkDeploymentKey = 'prod'
 export let userStakingPoolContract = null
 
-const ProtocolFeeVaultDeploymentKey = Object.keys(ProtocolFeeVault.networks)[0]
+const ProtocolFeeVaultDeploymentKey = 'prod'
 export let protocolFeeVaultContract = null
 
 export const initWeb3 = async () => {
