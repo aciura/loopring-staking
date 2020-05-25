@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/loopring-staking/static/css/main.be772805.chunk.css",
+    "main.js": "/loopring-staking/static/js/main.4777b7a0.chunk.js",
+    "main.js.map": "/loopring-staking/static/js/main.4777b7a0.chunk.js.map",
+    "runtime-main.js": "/loopring-staking/static/js/runtime-main.0410f88d.js",
+    "runtime-main.js.map": "/loopring-staking/static/js/runtime-main.0410f88d.js.map",
+    "static/js/2.445e49ed.chunk.js": "/loopring-staking/static/js/2.445e49ed.chunk.js",
+    "static/js/2.445e49ed.chunk.js.map": "/loopring-staking/static/js/2.445e49ed.chunk.js.map",
+    "index.html": "/loopring-staking/index.html",
+    "precache-manifest.f84fab8fa7d8243f62d3b7b113d8434b.js": "/loopring-staking/precache-manifest.f84fab8fa7d8243f62d3b7b113d8434b.js",
+    "service-worker.js": "/loopring-staking/service-worker.js",
+    "static/css/main.be772805.chunk.css.map": "/loopring-staking/static/css/main.be772805.chunk.css.map",
+    "static/js/2.445e49ed.chunk.js.LICENSE.txt": "/loopring-staking/static/js/2.445e49ed.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0410f88d.js",
+    "static/js/2.445e49ed.chunk.js",
+    "static/css/main.be772805.chunk.css",
+    "static/js/main.4777b7a0.chunk.js"
+  ]
+}
