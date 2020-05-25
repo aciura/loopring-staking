@@ -1,82 +1,111 @@
-import { loopringContract, userStakingPoolContract } from '../LrcContract'
+import Web3 from 'web3'
+import {
+  loopringContract,
+  userStakingPoolContract,
+  protocolFeeVaultContract,
+} from './Ethereum'
 
-const getLrcBalances = accounts => {
-  console.log('getLrcBalances', accounts)
+const getLrcBalance = (account) => {
+  console.log('getLrcBalance', account)
 
-  const balances = accounts.map(acc =>
-    loopringContract.methods
-      .balanceOf(acc)
-      .call()
-      .then(balance => {
-        console.log(`Acc ${acc} balance:`, balance)
-        return { address: acc, balance }
-      }),
-  )
-
-  console.log('balances', balances)
-
-  return Promise.all(balances)
-    .then(resolved => {
-      console.log('Promise.all resolved', resolved)
-      return resolved
+  return loopringContract.methods
+    .balanceOf(account)
+    .call()
+    .then((balance) => {
+      console.log(`Acc ${account} balance:`, balance)
+      return Web3.utils.toBN(balance)
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error)
-      return []
+      return -1
     })
 }
 
-const getLrcAllowances = accounts => {
+const getLrcAllowance = (account) => {
   const spenderAddress = userStakingPoolContract._address
-  console.log('getLrcAllowances', accounts, spenderAddress)
+  console.log('getLrcAllowances', { account, spenderAddress })
 
-  const allowances = accounts.map(address =>
-    loopringContract.methods
-      .allowance(address, spenderAddress)
-      .call()
-      .then(allowance => ({ [address]: allowance })),
-  )
-  console.log(allowances)
-
-  return Promise.all(allowances)
+  return loopringContract.methods
+    .allowance(account, spenderAddress)
+    .call()
+    .then((allowance) => {
+      console.log(`Acc ${account} allowance:`, allowance)
+      return Web3.utils.toBN(allowance)
+    })
+    .catch((error) => {
+      console.error(error)
+      return -1
+    })
 }
 
 const setLrcAllowance = (address, lrcAmountInWei) => {
   const spenderAddress = userStakingPoolContract._address
-  console.log('setLrcAllowance', address, spenderAddress, lrcAmountInWei)
+  console.log('setLrcAllowance', { address, spenderAddress, lrcAmountInWei })
 
   return loopringContract.methods
     .approve(spenderAddress, lrcAmountInWei)
     .send({ from: address })
-    .then(result => result)
+    .then((result) => result)
 }
 
 const stake = (address, lrcAmountInWei) => {
-  console.log('stake', address, lrcAmountInWei)
+  console.log('stake', { address, lrcAmountInWei })
 
   return userStakingPoolContract.methods
     .stake(lrcAmountInWei)
-    .send({ from: address, gasLimit: 200000 })
+    .send({ from: address, gasLimit: 2000000 })
 }
 
-const getUserStaking = address => {
+const getUserStaking = (address) => {
   console.log('getUserStaking', address)
-
   return userStakingPoolContract.methods.getUserStaking(address).call()
 }
 
-const claimReward = address => {
+const claimReward = (address) => {
   console.log('claimReward', address)
-
   return userStakingPoolContract.methods.claim().send({ from: address })
 }
 
+const withdraw = (address, lrcAmountInWei) => {
+  console.log('withdraw', { address, lrcAmountInWei })
+  return userStakingPoolContract.methods
+    .withdraw(lrcAmountInWei)
+    .send({ from: address })
+}
+
+const getTotalStaking = () => {
+  console.log('getTotalStaking')
+
+  return userStakingPoolContract.methods.getTotalStaking().call()
+}
+
+export const getProtocolFeeVaultValue = () => {
+  console.log('getProtocolFeeVaultValue')
+  return loopringContract.methods
+    .balanceOf(protocolFeeVaultContract._address)
+    .call()
+    .then((balance) => {
+      console.log('protocolFeeVaultContract.address', {
+        address: protocolFeeVaultContract._address,
+        balance,
+      })
+      return Web3.utils.toBN(balance)
+    })
+    .catch((error) => {
+      console.error(error)
+      return 0
+    })
+}
+
 const LrcService = {
-  getLrcBalances,
-  getLrcAllowances,
+  getLrcBalance,
+  getLrcAllowance,
   setLrcAllowance,
   getUserStaking,
   stake,
   claimReward,
+  withdraw,
+  getTotalStaking,
+  getProtocolFeeVaultValue,
 }
 export default LrcService

@@ -1,47 +1,54 @@
 import React from 'react'
 import LrcService from '../../services/LrcService'
 import { ClaimComponent } from '../Claim/ClaimComponent'
+import { Withdraw } from '../Withdraw/Withdraw'
+import { weiMin, displayWei } from '../utils'
+import { TokenAmount } from '../TokenAmount'
+import ChangeAmount from '../ChangeAmount/ChangeAmount'
 
 import styles from './staking.module.scss'
 
-const userStaking = {
-  withdrawalWaitTime: 0 /*uint256 the time you need to wait (seconds) before you can withdraw staked LRC */,
-  rewardWaitTime: 0 /*uint256* - the time you need to wait (seconds) before you can claim LRC reward */,
-  balance: 0 /*uint256*/,
-  pendingReward: 0 /*uint256*/,
-}
+// const userStaking = {
+//   withdrawalWaitTime: 0 /*uint256 the time you need to wait (seconds) before you can withdraw staked LRC */,
+//   rewardWaitTime: 0 /*uint256* - the time you need to wait (seconds) before you can claim LRC reward */,
+//   balance: 0 /*uint256*/,
+//   pendingReward: 0 /*uint256*/,
+// }
 
 export function StakingComponent({
   address,
   allowance,
   balance,
-  refreshAccountInfo = _ => {},
+  refreshAccountInfo = (_) => {},
 }) {
-  const [newStakeAmount, setNewStakeAmount] = React.useState(0)
   const [stakingData, setStakingData] = React.useState(null)
   const [error, setError] = React.useState(null)
+  const [message, setMessage] = React.useState(null)
+  const maxStakeAmount = weiMin(allowance, balance)
+  const [newStakeAmount, setNewStakeAmount] = React.useState(0)
 
-  const refreshAddressStaking = address => {
-    LrcService.getUserStaking(address).then(result => {
+  const refreshAddressStaking = (address) => {
+    LrcService.getUserStaking(address).then((result) => {
       setStakingData(result)
     })
-    refreshAccountInfo(address)
   }
 
-  const updateAmount = e => {
-    const newAmount = e.target.value
-    if (newAmount > 0) setNewStakeAmount(newAmount)
-  }
+  const stakeLrc = (newStakeAmount) => {
+    console.log('stakeLrc', { newStakeAmount })
 
-  const stakeLrc = () => {
     LrcService.stake(address, newStakeAmount)
-      .then(result => {
-        console.log(result)
+      .then((result) => {
+        console.log('Staked', result)
+        setError(null)
+        setMessage(`Successfully staked ${displayWei(newStakeAmount)} LRC`)
+        setNewStakeAmount(0)
         refreshAddressStaking(address)
+        refreshAccountInfo(address)
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error)
         setError(error.toString())
+        setMessage(null)
       })
   }
 
@@ -49,29 +56,39 @@ export function StakingComponent({
     refreshAddressStaking(address)
   }, [address])
 
-  const getWaitTimeInDays = waitTimeInSec => {
-    return (waitTimeInSec / 60 / 60 / 24).toFixed(2)
-  }
-
   return (
     <div className={styles.staking}>
-      <h4>Staking amount</h4>
-      <div>Stake balance: {stakingData?.balance}</div>
-      <div>Stake max: {Math.min(allowance, balance)}</div>
+      <h4>Staking</h4>
+      <div>Staking locks up your token for 90 days.</div>
       <div>
-        withdrawal Wait Time:&nbsp;
-        {getWaitTimeInDays(stakingData?.withdrawalWaitTime)}
-        days
+        Already staked:{' '}
+        <TokenAmount amountInWei={stakingData?.balance} symbol="LRC" />{' '}
       </div>
       <div>
-        Wait time before claiming reward:&nbsp;
-        {getWaitTimeInDays(stakingData?.rewardWaitTime)} days
+        You can stake:{' '}
+        <TokenAmount
+          amountInWei={+allowance ? maxStakeAmount : 0}
+          symbol="LRC"
+        />
       </div>
-      <input type="number" value={newStakeAmount} onChange={updateAmount} />
-      <input type="submit" value="Stake" onClick={stakeLrc} />
-      {!!error && <div style={{ color: 'red' }}>{error}</div>}
+
+      <ChangeAmount
+        text={'New Stake:'}
+        max={maxStakeAmount}
+        amount={newStakeAmount}
+        submitAmountChange={stakeLrc}
+      />
+
+      {!!message && <div className={styles.message}>{message}</div>}
+      {!!error && <div className={styles.error}>Staking LRC has failed</div>}
 
       <ClaimComponent
+        stakingData={stakingData}
+        address={address}
+        refreshAccountInfo={refreshAccountInfo}
+      />
+
+      <Withdraw
         stakingData={stakingData}
         address={address}
         refreshAccountInfo={refreshAccountInfo}
