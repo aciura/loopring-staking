@@ -1,7 +1,7 @@
 import React from 'react'
-import { getEthAccounts, initWeb3 } from './services/Ethereum'
+import { getEthAccounts, initWeb3 } from '../services/Ethereum'
 
-import styles from './App.module.scss'
+import styles from '../App.module.scss'
 
 export function Connect({ onConnected, setAccounts }) {
   const connect = (e) => {

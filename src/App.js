@@ -8,7 +8,7 @@ import {
   initTruffle,
 } from './services/Ethereum'
 import { LinkToEtherscan } from './components/LinkToEtherscan'
-import { Connect } from './Connect'
+import { Connect } from './components/Connect'
 
 import styles from './App.module.scss'
 
