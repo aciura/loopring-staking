@@ -54,7 +54,8 @@ export function Account({ address }) {
 
   return (
     <div className={styles.Account}>
-      <h3>Address: {address}</h3>
+      <h2>Loopring Staking</h2>
+      <h4>Address: {address}</h4>
       {/* {isLoading && <div>Loading...</div>} */}
       <div>
         Account balance: <TokenAmount amountInWei={balance} symbol="LRC" />

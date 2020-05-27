@@ -8,7 +8,7 @@ import {
   initTruffle,
 } from './services/Ethereum'
 import { LinkToEtherscan } from './components/LinkToEtherscan'
-import { Connect } from './components/Connect'
+import { Connect } from './components/Connect/Connect'
 
 import styles from './App.module.scss'
 
@@ -43,37 +43,44 @@ function App() {
         {!connected && (
           <>
             <Connect setAccounts={setAccounts} onConnected={onConnected} />
-            <button className={styles.testBtn} onClick={connectLocal}>
-              Test Connect Local
-            </button>
+            {/* <button className={styles.testBtn} onClick={connectLocal}>
+              Connect to local Ethereum network
+            </button> */}
           </>
         )}
 
-        <h2>Accounts</h2>
-        <select onChange={accountSelected}>
-          {accounts.map((account) => (
-            <option key={account} value={account}>
-              {account}
-            </option>
-          ))}
-        </select>
+        {connected && (
+          <>
+            {accounts?.length > 1 && (
+              <select onChange={accountSelected}>
+                {accounts.map((account) => (
+                  <option key={account} value={account}>
+                    {account}
+                  </option>
+                ))}
+              </select>
+            )}
 
-        {selectedAccount && (
-          <Account key={selectedAccount} address={selectedAccount} />
+            {selectedAccount && (
+              <>
+                <Account key={selectedAccount} address={selectedAccount} />
+
+                <LinkToEtherscan
+                  label={'Loopring token contract:'}
+                  address={loopringContract?._address}
+                ></LinkToEtherscan>
+                <LinkToEtherscan
+                  label={'Loopring User Staking Pool contract:'}
+                  address={userStakingPoolContract?._address}
+                ></LinkToEtherscan>
+                <LinkToEtherscan
+                  label={'Protocol Fee Vault Contract:'}
+                  address={protocolFeeVaultContract?._address}
+                ></LinkToEtherscan>
+              </>
+            )}
+          </>
         )}
-
-        <LinkToEtherscan
-          label={'Loopring token contract:'}
-          address={loopringContract?._address}
-        ></LinkToEtherscan>
-        <LinkToEtherscan
-          label={'Loopring User Staking Pool contract:'}
-          address={userStakingPoolContract?._address}
-        ></LinkToEtherscan>
-        <LinkToEtherscan
-          label={'Protocol Fee Vault Contract:'}
-          address={protocolFeeVaultContract?._address}
-        ></LinkToEtherscan>
       </section>
     </main>
   )
