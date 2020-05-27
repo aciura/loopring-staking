@@ -1,7 +1,7 @@
 import React from 'react'
-import { getEthAccounts, initWeb3 } from '../services/Ethereum'
+import { getEthAccounts, initWeb3 } from '../../services/Ethereum'
 
-import styles from '../App.module.scss'
+import styles from './Connect.module.scss'
 
 export function Connect({ onConnected, setAccounts }) {
   const connect = (e) => {
@@ -20,11 +20,15 @@ export function Connect({ onConnected, setAccounts }) {
   }
 
   return (
-    <div className={styles.connectContainer}>
+    <div className={styles.connect}>
       <h4>Loopring Staking</h4>
       <button className={styles.connectButton} onClick={connect}>
         Connect
       </button>
+      <div>
+        This app needs a MetaMask browser extension to connect to Ethereum
+        network
+      </div>
     </div>
   )
 }

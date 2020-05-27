@@ -1,8 +1,10 @@
 @import '../../styles/mix';
 
 .claim {
-  margin: 5px;
-  padding: 1rem;
+  margin: 0px;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
 
   .error {
     color: white;
@@ -10,5 +12,9 @@
     font-weight: bold;
     border-radius: 1rem;
     padding: 1rem;
+  }
+
+  button {
+    align-self: center;
   }
 }
