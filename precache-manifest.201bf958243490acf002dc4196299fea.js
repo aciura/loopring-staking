@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cbf03941caafe8b4c24d1c9b9ea3a027",
+    "revision": "09615d5df6eb2d545f33d35a18c80152",
     "url": "/loopring-staking/index.html"
   },
   {
-    "revision": "013287cf01559789f318",
-    "url": "/loopring-staking/static/css/main.7101537a.chunk.css"
+    "revision": "cd929c8a1adfa89445ba",
+    "url": "/loopring-staking/static/css/main.6f159d49.chunk.css"
   },
   {
     "revision": "ba0535fc49d813e5c4da",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/loopring-staking/static/js/2.4ac96e39.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "013287cf01559789f318",
+    "revision": "cd929c8a1adfa89445ba",
     "url": "/loopring-staking/static/js/main.8f950705.chunk.js"
   },
   {

@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/loopring-staking/static/css/main.7101537a.chunk.css",
+    "main.css": "/loopring-staking/static/css/main.6f159d49.chunk.css",
     "main.js": "/loopring-staking/static/js/main.8f950705.chunk.js",
     "main.js.map": "/loopring-staking/static/js/main.8f950705.chunk.js.map",
     "runtime-main.js": "/loopring-staking/static/js/runtime-main.0410f88d.js",
@@ -8,15 +8,15 @@
     "static/js/2.4ac96e39.chunk.js": "/loopring-staking/static/js/2.4ac96e39.chunk.js",
     "static/js/2.4ac96e39.chunk.js.map": "/loopring-staking/static/js/2.4ac96e39.chunk.js.map",
     "index.html": "/loopring-staking/index.html",
-    "precache-manifest.12f801e3916e5c753ea819002f4d5edf.js": "/loopring-staking/precache-manifest.12f801e3916e5c753ea819002f4d5edf.js",
+    "precache-manifest.201bf958243490acf002dc4196299fea.js": "/loopring-staking/precache-manifest.201bf958243490acf002dc4196299fea.js",
     "service-worker.js": "/loopring-staking/service-worker.js",
-    "static/css/main.7101537a.chunk.css.map": "/loopring-staking/static/css/main.7101537a.chunk.css.map",
+    "static/css/main.6f159d49.chunk.css.map": "/loopring-staking/static/css/main.6f159d49.chunk.css.map",
     "static/js/2.4ac96e39.chunk.js.LICENSE.txt": "/loopring-staking/static/js/2.4ac96e39.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0410f88d.js",
     "static/js/2.4ac96e39.chunk.js",
-    "static/css/main.7101537a.chunk.css",
+    "static/css/main.6f159d49.chunk.css",
     "static/js/main.8f950705.chunk.js"
   ]
 }
