@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/loopring-staking/static/css/main.6f159d49.chunk.css",
-    "main.js": "/loopring-staking/static/js/main.8f950705.chunk.js",
-    "main.js.map": "/loopring-staking/static/js/main.8f950705.chunk.js.map",
-    "runtime-main.js": "/loopring-staking/static/js/runtime-main.0410f88d.js",
-    "runtime-main.js.map": "/loopring-staking/static/js/runtime-main.0410f88d.js.map",
-    "static/js/2.4ac96e39.chunk.js": "/loopring-staking/static/js/2.4ac96e39.chunk.js",
-    "static/js/2.4ac96e39.chunk.js.map": "/loopring-staking/static/js/2.4ac96e39.chunk.js.map",
+    "main.css": "/loopring-staking/static/css/main.3fa2c024.chunk.css",
+    "main.js": "/loopring-staking/static/js/main.dfa9ca40.chunk.js",
+    "main.js.map": "/loopring-staking/static/js/main.dfa9ca40.chunk.js.map",
+    "runtime-main.js": "/loopring-staking/static/js/runtime-main.ca3722a2.js",
+    "runtime-main.js.map": "/loopring-staking/static/js/runtime-main.ca3722a2.js.map",
+    "static/js/2.ddc81356.chunk.js": "/loopring-staking/static/js/2.ddc81356.chunk.js",
+    "static/js/2.ddc81356.chunk.js.map": "/loopring-staking/static/js/2.ddc81356.chunk.js.map",
     "index.html": "/loopring-staking/index.html",
-    "precache-manifest.201bf958243490acf002dc4196299fea.js": "/loopring-staking/precache-manifest.201bf958243490acf002dc4196299fea.js",
+    "precache-manifest.dc4266bf1cc3ee73fef2c1541479436a.js": "/loopring-staking/precache-manifest.dc4266bf1cc3ee73fef2c1541479436a.js",
     "service-worker.js": "/loopring-staking/service-worker.js",
-    "static/css/main.6f159d49.chunk.css.map": "/loopring-staking/static/css/main.6f159d49.chunk.css.map",
-    "static/js/2.4ac96e39.chunk.js.LICENSE.txt": "/loopring-staking/static/js/2.4ac96e39.chunk.js.LICENSE.txt"
+    "static/css/main.3fa2c024.chunk.css.map": "/loopring-staking/static/css/main.3fa2c024.chunk.css.map",
+    "static/js/2.ddc81356.chunk.js.LICENSE.txt": "/loopring-staking/static/js/2.ddc81356.chunk.js.LICENSE.txt",
+    "static/media/LRC_black.81850651.svg": "/loopring-staking/static/media/LRC_black.81850651.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0410f88d.js",
-    "static/js/2.4ac96e39.chunk.js",
-    "static/css/main.6f159d49.chunk.css",
-    "static/js/main.8f950705.chunk.js"
+    "static/js/runtime-main.ca3722a2.js",
+    "static/js/2.ddc81356.chunk.js",
+    "static/css/main.3fa2c024.chunk.css",
+    "static/js/main.dfa9ca40.chunk.js"
   ]
 }
