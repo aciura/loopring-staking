@@ -12,6 +12,19 @@
 
   @include neumorphism;
 
+  header {
+    display: flex;
+    justify-content: center;
+  }
+
+  svg {
+    position: relative;
+    // left: -18rem;
+    top: -1rem;
+    width: 4rem;
+    height: auto;
+  }
+
   h2 {
     text-align: center;
     margin-top: 0;

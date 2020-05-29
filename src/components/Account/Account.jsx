@@ -3,6 +3,8 @@ import LrcService from '../../services/LrcService'
 import ChangeAmount from '../ChangeAmount/ChangeAmount'
 import { StakingComponent } from '../Staking/StakingComponent'
 import { TokenAmount } from '../TokenAmount'
+import { ReactComponent as LrcLogo } from '../../assets/LRC_black.svg'
+import { LinkToEtherscan } from '../LinkToEtherscan'
 
 import styles from './Account.module.scss'
 
@@ -54,8 +56,14 @@ export function Account({ address }) {
 
   return (
     <div className={styles.Account}>
-      <h2>Loopring Staking</h2>
-      <h4>Address: {address}</h4>
+      <header>
+        <LrcLogo />
+        <h2>Loopring Staking</h2>
+      </header>
+      {/* <h4> */}
+      {/* <span>Address:&nbsp;</span> */}
+      <LinkToEtherscan label={'Address:'} address={address}></LinkToEtherscan>
+      {/* </h4> */}
       {/* {isLoading && <div>Loading...</div>} */}
       <div>
         Account balance: <TokenAmount amountInWei={balance} symbol="LRC" />

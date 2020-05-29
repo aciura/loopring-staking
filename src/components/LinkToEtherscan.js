@@ -7,7 +7,7 @@ export function LinkToEtherscan({ label, address, children }) {
 
   return (
     <div>
-      {label}&nbsp;
+      <span>{label}&nbsp;</span>
       <a href={getUrl(address)}>{address}</a>
       {children}
     </div>

@@ -14,12 +14,19 @@
   text-align: center;
   transition: all 1s;
 
-  // h4 {
-  //   color: $ligt-white;
-  // }
-
   div {
     font-size: 12px;
+  }
+
+  header {
+    svg {
+      width: 8rem;
+      height: auto;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
   }
 
   .connectButton {

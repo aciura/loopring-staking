@@ -4,15 +4,29 @@
 .App {
   text-align: center;
   color: rgb(3, 24, 43);
+  min-width: 500px;
 
   .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
+
     max-width: 640px;
     margin: 0 auto;
     text-align: center;
+  }
+}
+
+:global(a) {
+  // display: block;
+  color: #124272;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+
+  &:visited {
+    color: #124272;
   }
 }
 

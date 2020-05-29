@@ -1,6 +1,6 @@
 {
-  "name": "staking-ui",
-  "version": "0.1.0",
+  "name": "loopring-staking",
+  "version": "1.0.0",
   "private": false,
   "homepage": "https://aciura.github.io/loopring-staking/",
   "dependencies": {

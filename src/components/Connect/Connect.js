@@ -1,5 +1,6 @@
 import React from 'react'
 import { getEthAccounts, initWeb3 } from '../../services/Ethereum'
+import { ReactComponent as LrcLogo } from '../../assets/LRC_black.svg'
 
 import styles from './Connect.module.scss'
 
@@ -21,7 +22,10 @@ export function Connect({ onConnected, setAccounts }) {
 
   return (
     <div className={styles.connect}>
-      <h4>Loopring Staking</h4>
+      <header>
+        <LrcLogo />
+        <h2>Loopring Staking</h2>
+      </header>
       <button className={styles.connectButton} onClick={connect}>
         Connect
       </button>
