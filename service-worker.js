@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/loopring-staking/precache-manifest.dc4266bf1cc3ee73fef2c1541479436a.js"
+  "/loopring-staking/precache-manifest.962d4987d4a65e72eed473b59a5941f2.js"
 );
 
 self.addEventListener('message', (event) => {
