@@ -2,9 +2,9 @@
 
 ![Loopring Staking UI](https://raw.githubusercontent.com/aciura/loopring-staking/master/screenshot.png 'Screenshot for Loopring Staking UI')
 
-### Check out this project live on github pages
+### Check out this project live on github pages https://aciura.github.io/loopring-staking/
 
-https://aciura.github.io/loopring-staking/
+Project requires MetaMask browser extension!
 
 ### Checkout out my blog at https://cloudtech.pl
 
